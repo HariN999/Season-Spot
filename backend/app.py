@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_caching import Cache
 from pymongo import MongoClient
-import google.generativai as genai
+import google.generativeai as genai
 from dotenv import load_dotenv
 from datetime import datetime, timedelta, timezone
 
