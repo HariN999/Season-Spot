@@ -4,16 +4,17 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_caching import Cache
 from pymongo import MongoClient
-import google.generativeai as genai
+import google.generativai as genai
 from dotenv import load_dotenv
-# The datetime and timedelta imports are no longer needed
-# from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone
 
 load_dotenv()
 
 # --- App Initialization & Configuration ---
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+# FIX: Add your live Vercel URL to the list of allowed origins
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "https://*.vercel.app"]}})
+
 
 # Configure caching
 app.config['CACHE_TYPE'] = 'SimpleCache'
@@ -56,7 +57,7 @@ def get_states():
 
 @app.route('/api/info', methods=['GET'])
 def get_state_info():
-    """Gets suggestions using the Cache -> DB -> AI strategy."""
+    """Gets suggestions, automatically refreshing data if it's older than 30 days."""
     state = request.args.get('state')
     season = request.args.get('season')
 
@@ -71,10 +72,14 @@ def get_state_info():
 
     # 2. Check Database
     if db_suggestion := suggestions_collection.find_one({"state": state, "season": season}):
-        # The automatic refresh logic has been removed. We now serve directly from the DB.
-        db_suggestion["_id"] = str(db_suggestion["_id"])
-        cache.set(cache_key, db_suggestion)
-        return jsonify([db_suggestion])
+        is_stale = datetime.now(timezone.utc) - db_suggestion.get("last_updated", datetime.min.replace(tzinfo=timezone.utc)) > timedelta(days=30)
+        
+        if not is_stale:
+            db_suggestion["_id"] = str(db_suggestion["_id"])
+            cache.set(cache_key, db_suggestion)
+            return jsonify([db_suggestion])
+        else:
+            suggestions_collection.delete_one({"_id": db_suggestion["_id"]})
 
     # 3. Call AI API
     if not model:
@@ -92,11 +97,11 @@ def get_state_info():
         response = model.generate_content(prompt)
         ai_data = json.loads(response.text.strip().replace('```json', '').replace('```', ''))
         
-        # The 'last_updated' field has been removed.
         new_suggestion = {
             "state": state, "season": season,
             "food": ai_data.get("food", []),
-            "locations": ai_data.get("locations", [])
+            "locations": ai_data.get("locations", []),
+            "last_updated": datetime.now(timezone.utc)
         }
         
         result = suggestions_collection.insert_one(new_suggestion)
@@ -108,6 +113,8 @@ def get_state_info():
     except Exception as e:
         print(f"An error occurred: {e}")
         return jsonify({"error": f"Failed to get AI suggestions for {state}."}), 500
+
+# The '/api/like' endpoint has been removed as it is no longer used.
 
 # --- Main Execution ---
 if __name__ == '__main__':
