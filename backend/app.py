@@ -20,7 +20,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 app = Flask(__name__)
 
 # --- CORS Setup ---
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "https://season-spot.vercel.app"]}})
 
 # --- Cache Configuration ---
 app.config['CACHE_TYPE'] = 'SimpleCache'
