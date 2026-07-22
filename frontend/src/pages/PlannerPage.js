@@ -150,7 +150,7 @@ export default function PlannerPage() {
                 <Typography variant="h6" sx={{ mb: 3, fontWeight: 700 }}>How do you travel?</Typography>
 
                 <Grid container spacing={3}>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <FormControl fullWidth>
                       <InputLabel>Traveler Style</InputLabel>
                       <Select value={tripType} label="Traveler Style" onChange={e => setTripType(e.target.value)}>
@@ -158,7 +158,7 @@ export default function PlannerPage() {
                       </Select>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid size={{ xs: 12, sm: 6 }}>
                     <FormControl fullWidth>
                       <InputLabel>Budget</InputLabel>
                       <Select value={budget} label="Budget" onChange={e => setBudget(e.target.value)}>
@@ -166,7 +166,7 @@ export default function PlannerPage() {
                       </Select>
                     </FormControl>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid size={{ xs: 12 }}>
                     <FormControl fullWidth>
                       <InputLabel>Duration</InputLabel>
                       <Select value={duration} label="Duration" onChange={e => setDuration(e.target.value)}>

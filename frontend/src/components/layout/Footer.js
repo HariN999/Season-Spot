@@ -36,7 +36,7 @@ export default function Footer() {
       <Container maxWidth="lg" sx={{ pt: 8, pb: 4 }}>
         <Grid container spacing={5}>
           {/* Brand Column */}
-          <Grid item xs={12} md={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
               <Box
                 sx={{
@@ -69,7 +69,7 @@ export default function Footer() {
           </Grid>
 
           {/* Quick Links */}
-          <Grid item xs={6} md={3}>
+          <Grid size={{ xs: 6, md: 3 }}>
             <Typography variant="overline" sx={{ color: '#94a3b8', display: 'block', mb: 2 }}>
               Platform
             </Typography>
@@ -92,7 +92,7 @@ export default function Footer() {
           </Grid>
 
           {/* Top Destinations */}
-          <Grid item xs={6} md={3}>
+          <Grid size={{ xs: 6, md: 3 }}>
             <Typography variant="overline" sx={{ color: '#94a3b8', display: 'block', mb: 2 }}>
               Top Destinations
             </Typography>
@@ -115,7 +115,7 @@ export default function Footer() {
           </Grid>
 
           {/* Tech */}
-          <Grid item xs={12} md={2}>
+          <Grid size={{ xs: 12, md: 2 }}>
             <Typography variant="overline" sx={{ color: '#94a3b8', display: 'block', mb: 2 }}>
               Built With
             </Typography>

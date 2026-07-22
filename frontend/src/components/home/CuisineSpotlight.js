@@ -9,7 +9,7 @@ export default function CuisineSpotlight({ dishes }) {
   return (
     <Grid container spacing={3}>
       {dishes.slice(0, 6).map((dish, i) => (
-        <Grid item xs={12} sm={6} md={4} key={`${dish.stateName}-${dish.name}-${i}`}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`${dish.stateName}-${dish.name}-${i}`}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

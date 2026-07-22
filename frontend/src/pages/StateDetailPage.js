@@ -108,7 +108,7 @@ export default function StateDetailPage() {
           <SectionHeading overline="Seasonal Comparison" title={`${state.name} Across Seasons`} />
           <Grid container spacing={2}>
             {seasonComparison.map(s => (
-              <Grid item xs={6} md={3} key={s.season}>
+              <Grid size={{ xs: 6, md: 3 }} key={s.season}>
                 <Card sx={{
                   borderRadius: 3, p: 2.5,
                   border: s.season === season ? '1px solid #f59e0b' : undefined,
@@ -132,7 +132,7 @@ export default function StateDetailPage() {
               subtitle={`Authentic culinary experiences in ${state.name} during ${season}.`} />
             <Grid container spacing={3}>
               {state.food.map((dish, i) => (
-                <Grid item xs={12} sm={6} md={4} key={`${dish.name}-${i}`}>
+                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`${dish.name}-${i}`}>
                   <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
                     <Card sx={{ borderRadius: 4, height: '100%', '&:hover': { borderColor: 'rgba(245,158,11,0.3)', transform: 'translateY(-3px)' }, transition: 'all 0.3s ease' }}>
@@ -159,7 +159,7 @@ export default function StateDetailPage() {
               subtitle={`Best places to explore in ${state.name} during ${season}.`} />
             <Grid container spacing={3}>
               {state.locations.map((loc, i) => (
-                <Grid item xs={12} sm={6} md={4} key={`${loc.name}-${i}`}>
+                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`${loc.name}-${i}`}>
                   <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
                     <Card sx={{ borderRadius: 4, height: '100%', '&:hover': { borderColor: 'rgba(56,189,248,0.3)', transform: 'translateY(-3px)' }, transition: 'all 0.3s ease' }}>
@@ -183,7 +183,7 @@ export default function StateDetailPage() {
             <SectionHeading overline="Insider Tips" title="Travel Essentials" />
             <Grid container spacing={2}>
               {state.travelTips.map((tip, i) => (
-                <Grid item xs={12} md={4} key={i}>
+                <Grid size={{ xs: 12, md: 4 }} key={i}>
                   <Box sx={{ p: 2.5, bgcolor: '#111827', borderRadius: 3, borderLeft: '3px solid #f59e0b', height: '100%' }}>
                     <Typography variant="body2" sx={{ color: '#f8fafc' }}>
                       <LightbulbIcon sx={{ fontSize: 16, color: '#f59e0b', mr: 1, verticalAlign: 'text-bottom' }} />
@@ -217,7 +217,7 @@ export default function StateDetailPage() {
             <SectionHeading overline="Similar Vibes" title="Nearby Destinations" />
             <Grid container spacing={3}>
               {nearbyStates.map(ns => (
-                <Grid item xs={12} sm={4} key={ns.name}>
+                <Grid size={{ xs: 12, sm: 4 }} key={ns.name}>
                   <Card onClick={() => navigate(`/state/${encodeURIComponent(ns.name)}`)}
                     sx={{ cursor: 'pointer', borderRadius: 4, '&:hover': { transform: 'translateY(-4px)', borderColor: 'rgba(245,158,11,0.3)' }, transition: 'all 0.3s ease' }}>
                     <CardContent sx={{ p: 3 }}>

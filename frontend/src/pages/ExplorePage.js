@@ -108,7 +108,7 @@ export default function ExplorePage() {
             <motion.div key="grid" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <Grid container spacing={3}>
                 {filteredStates.map((state, i) => (
-                  <Grid item xs={12} sm={6} md={4} lg={3} key={state.name}>
+                  <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={state.name}>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -139,6 +139,7 @@ export default function ExplorePage() {
                             alt={state.name}
                             className="explore-img"
                             loading="lazy"
+                            onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80"; }}
                             sx={{ transition: 'transform 0.5s ease' }}
                           />
                           <Box sx={{ position: 'absolute', top: 10, right: 10 }}>

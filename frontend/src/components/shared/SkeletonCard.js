@@ -34,7 +34,7 @@ export function SkeletonGrid({ count = 8 }) {
   return (
     <Grid container spacing={3}>
       {Array.from({ length: count }).map((_, i) => (
-        <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
+        <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={i}>
           <SkeletonCard />
         </Grid>
       ))}

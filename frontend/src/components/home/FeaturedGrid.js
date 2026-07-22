@@ -21,7 +21,7 @@ export default function FeaturedGrid({ states }) {
   return (
     <Grid container spacing={3}>
       {states.slice(0, 4).map((state, i) => (
-        <Grid item xs={12} sm={6} md={3} key={state.name}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={state.name}>
           <motion.div
             variants={cardVariants}
             initial="hidden"
@@ -58,6 +58,7 @@ export default function FeaturedGrid({ states }) {
                   alt={state.name}
                   className="card-image"
                   loading="lazy"
+                  onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80"; }}
                   sx={{ transition: 'transform 0.6s ease' }}
                 />
                 <Box sx={{ position: 'absolute', top: 12, right: 12 }}>

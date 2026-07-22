@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { getStateSeasonData } from '../data/seasonalData';
-import { STATE_IMAGES } from '../data/stateImages';
+import { STATE_IMAGES, DEFAULT_IMAGE } from '../data/stateImages';
 
 const ALL_STATES = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh",
@@ -17,7 +17,7 @@ export function useSeasonalData(season) {
       const data = getStateSeasonData(name, season);
       return {
         name,
-        image: STATE_IMAGES[name],
+        image: STATE_IMAGES[name] || DEFAULT_IMAGE,
         ...data,
       };
     });
