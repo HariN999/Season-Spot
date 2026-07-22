@@ -1,84 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import { Box } from '@mui/material';
-
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import StateCardGrid from './components/StateCardGrid';
-import StateDetailModal from './components/StateDetailModal';
-import ItineraryModal from './components/ItineraryModal';
-import Footer from './components/Footer';
+import theme from './theme';
+import { SeasonProvider } from './context/SeasonContext';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import HomePage from './pages/HomePage';
+import ExplorePage from './pages/ExplorePage';
+import StateDetailPage from './pages/StateDetailPage';
+import PlannerPage from './pages/PlannerPage';
 import './App.css';
 
-const DEFAULT_STATES = [
-  "Goa", "Himachal Pradesh", "Kerala", "Rajasthan", "Telangana",
-  "Tamil Nadu", "West Bengal", "Uttarakhand", "Sikkim", "Karnataka",
-  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chattisgarh",
-  "Gujarat", "Haryana", "Jharkhand", "Madhya Pradesh", "Maharashtra",
-  "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab",
-  "Tripura", "Uttar Pradesh"
-];
-
 function App() {
-  const [states] = useState(DEFAULT_STATES);
-  const [selectedSeason, setSelectedSeason] = useState('Monsoon');
-  const [selectedVibe, setSelectedVibe] = useState('All');
-  const [searchTerm, setSearchTerm] = useState('');
-  
-  const [selectedStateForDetail, setSelectedStateForDetail] = useState(null);
-  const [itineraryModalOpen, setItineraryModalOpen] = useState(false);
-
-  // Filter states by search input
-  const filteredStates = states.filter(s =>
-    s.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
-    <Box className="official-app-wrapper">
-      {/* Top Navbar */}
-      <Navbar
-        selectedSeason={selectedSeason}
-        onSelectSeason={setSelectedSeason}
-        onOpenItineraryModal={() => setItineraryModalOpen(true)}
-      />
-
-      {/* Hero Section */}
-      <Hero
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-        selectedVibe={selectedVibe}
-        onSelectVibe={setSelectedVibe}
-        selectedSeason={selectedSeason}
-        onSelectSeason={setSelectedSeason}
-      />
-
-      {/* State Cards Grid */}
-      <StateCardGrid
-        states={filteredStates}
-        selectedSeason={selectedSeason}
-        selectedVibe={selectedVibe}
-        onSelectState={stateName => setSelectedStateForDetail(stateName)}
-      />
-
-      {/* Dedicated State Detail Modal */}
-      <StateDetailModal
-        open={Boolean(selectedStateForDetail)}
-        onClose={() => setSelectedStateForDetail(null)}
-        state={selectedStateForDetail}
-        season={selectedSeason}
-        onOpenItineraryModal={() => setItineraryModalOpen(true)}
-      />
-
-      {/* AI Itinerary Modal */}
-      <ItineraryModal
-        open={itineraryModalOpen}
-        onClose={() => setItineraryModalOpen(false)}
-        state={selectedStateForDetail || 'Goa'}
-        season={selectedSeason}
-      />
-
-      {/* Official Footer */}
-      <Footer />
-    </Box>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <SeasonProvider>
+        <BrowserRouter>
+          <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: '#0b0f19' }}>
+            <Navbar />
+            <Box component="main" sx={{ flexGrow: 1 }}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/state/:stateName" element={<StateDetailPage />} />
+                <Route path="/planner" element={<PlannerPage />} />
+              </Routes>
+            </Box>
+            <Footer />
+          </Box>
+        </BrowserRouter>
+      </SeasonProvider>
+    </ThemeProvider>
   );
 }
 
