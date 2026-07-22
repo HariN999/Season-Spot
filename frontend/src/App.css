@@ -1,53 +1,186 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap');
 
 :root {
-  --primary-color: #673ab7; /* Deep Purple */
-  --secondary-color: #f50057; /* Pink */
-  --background-color: #f5f5f9;
-  --card-background: #ffffff;
-  --text-color: #333;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+  --season-accent: #3a86ff;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --text-main: #f8fafc;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
   margin: 0;
+  padding: 0;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .app-container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px 80px 20px;
 }
 
-.header {
+/* Seasonal Dynamic Theme Overlays */
+.app-container.Monsoon {
+  background: linear-gradient(135deg, #062826 0%, #0f4c3a 50%, #1a365d 100%);
+}
+
+.app-container.Winter {
+  background: linear-gradient(135deg, #0b192c 0%, #1e3e62 50%, #000000 100%);
+}
+
+.app-container.Summer {
+  background: linear-gradient(135deg, #3d0c02 0%, #681304 50%, #1c0a00 100%);
+}
+
+.app-container.Spring {
+  background: linear-gradient(135deg, #2b0b2e 0%, #52154d 50%, #190926 100%);
+}
+
+/* Header Banner */
+.header-wrapper {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.header h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+.header-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #60a5fa, #c084fc, #f472b6);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
 }
 
-.header p {
-  font-size: 1.1rem;
-  color: #666;
-  margin-top: -10px;
+.header-subtitle {
+  font-size: 1.15rem;
+  color: rgba(248, 250, 252, 0.75);
+  font-weight: 400;
 }
 
-.selectors-container {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+/* Selector & Filter Box */
+.selector-section-wrapper {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 30px;
   margin-bottom: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.results-container {
-  margin-top: 20px;
+.season-chip {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.season-chip.active {
+  background: linear-gradient(135deg, #3a86ff 0%, #4361ee 100%) !important;
+  color: #ffffff !important;
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 20px rgba(58, 134, 255, 0.5);
+}
+
+/* Main Suggestion Hero Card */
+.suggestion-hero-card {
+  background: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden;
+}
+
+.hero-badge-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.score-badge {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.temp-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Section Headings */
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+/* Dish & Location Cards */
+.item-card {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 18px !important;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.item-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.5) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dish-tag {
+  background: rgba(244, 114, 182, 0.2);
+  color: #f472b6;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.tip-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #38bdf8;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  color: #cbd5e1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 2.2rem;
+  }
+  .app-container {
+    padding: 15px 12px 50px 12px;
+  }
+  .selector-section-wrapper {
+    padding: 18px;
+  }
 }
