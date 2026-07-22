@@ -34,27 +34,37 @@ def generate_itinerary():
     trip_type = data.get('tripType', 'Foodie & Cultural')
     budget = data.get('budget', 'Moderate')
 
+    duration_str = data.get('duration', '3 Days')
+    try:
+        days = int(duration_str.split()[0])
+    except Exception:
+        days = 3
+
     if not api_key:
         # Smart fallback if API key is not configured in Vercel env yet
+        fallback_plan = {}
+        for d in range(1, days + 1):
+            if d == 1:
+                fallback_plan[f"day{d}"] = f"Arrival in {state} during {season}. Take a relaxing stroll through local heritage streets, sample iconic local snacks, and visit the main cultural museum."
+            elif d == days:
+                fallback_plan[f"day{d}"] = f"Cultural immersion and souvenir shopping in {state}'s vibrant artisanal bazaars. Farewell dinner featuring famous regional desserts."
+            else:
+                fallback_plan[f"day{d}"] = f"Day {d} exploration of top scenic highlights, local culinary spots, and heritage landmarks in {state}."
         return jsonify({
             "status": "success",
-            "plan": {
-                "day1": f"Arrival in {state} during {season}. Take a relaxing stroll through local heritage streets, sample iconic local snacks, and visit the main cultural museum.",
-                "day2": f"Explore top scenic highlights of {state}. Enjoy a curated traditional lunch thali followed by sunset views at famous local vantage points.",
-                "day3": f"Cultural immersion and souvenir shopping in {state}'s vibrant artisanal bazaars. Farewell dinner featuring famous regional desserts."
-            }
+            "plan": fallback_plan
         })
 
     try:
         model = genai.GenerativeModel('gemini-1.5-flash')
+        
+        json_keys = ", ".join([f'"day{d}": "activities and food spots for day {d}"' for d in range(1, days + 1)])
         prompt = f"""
-        Create a 3-day travel itinerary for a trip to {state}, India during {season}.
+        Create a {days}-day travel itinerary for a trip to {state}, India during {season}.
         Style: {trip_type}, Budget: {budget}.
-        Return ONLY minified valid JSON format:
+        Return ONLY minified valid JSON format matching exactly this structure:
         {{
-          "day1": "Summary of morning, afternoon, evening activities and local food spots",
-          "day2": "Summary of morning, afternoon, evening activities and scenic places",
-          "day3": "Summary of morning, afternoon, evening activities and farewell dinner"
+          {json_keys}
         }}
         """
         response = model.generate_content(prompt)
@@ -63,13 +73,17 @@ def generate_itinerary():
         return jsonify({"status": "success", "plan": parsed})
     except Exception as e:
         logging.error(f"Gemini itinerary generation error: {e}")
+        fallback_plan = {}
+        for d in range(1, days + 1):
+            if d == 1:
+                fallback_plan[f"day{d}"] = f"Arrival in {state} during {season}. Explore central landmarks and local food joints."
+            elif d == days:
+                fallback_plan[f"day{d}"] = f"Explore traditional handicrafts markets and enjoy a relaxing farewell evening."
+            else:
+                fallback_plan[f"day{d}"] = f"Day {d} of visiting top scenic destinations across {state} and enjoying regional specialties."
         return jsonify({
             "status": "fallback",
-            "plan": {
-                "day1": f"Arrival in {state} during {season}. Explore central landmarks and local food joints.",
-                "day2": f"Visit top tourist destinations across {state} and enjoy regional specialties.",
-                "day3": f"Explore traditional handicrafts markets and enjoy a relaxing farewell evening."
-            }
+            "plan": fallback_plan
         })
 
 @app.route('/api/info', methods=['GET'])

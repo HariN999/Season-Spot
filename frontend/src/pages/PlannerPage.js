@@ -56,13 +56,20 @@ export default function PlannerPage() {
       if (!response.ok) throw new Error('Server error');
       const data = await response.json();
       setItinerary(data.plan);
-    } catch {
+    } catch (err) {
       // Smart local fallback
-      setItinerary({
-        day1: `Arrival in ${selectedState} during ${season}. Explore local heritage sights, sample iconic regional dishes at long-standing eateries, and take an evening stroll through spice and handicraft bazaars.`,
-        day2: `Full day of exploring the signature scenic attractions of ${selectedState}. Enjoy a curated traditional lunch thali at a heritage restaurant, followed by sunset views at an iconic lookout point.`,
-        day3: `Cultural immersion day in ${selectedState}. Visit historic monuments, shop for regional souvenirs and handlooms, and enjoy a farewell dinner featuring the region's most celebrated desserts.`,
-      });
+      const days = parseInt(duration) || 3;
+      const fallbackPlan = {};
+      for (let d = 1; d <= days; d++) {
+        if (d === 1) {
+          fallbackPlan[`day${d}`] = `Arrival in ${selectedState} during ${season}. Explore local heritage sights, sample iconic regional dishes at long-standing eateries, and take an evening stroll through spice and handicraft bazaars.`;
+        } else if (d === days) {
+          fallbackPlan[`day${d}`] = `Cultural immersion day in ${selectedState}. Visit historic monuments, shop for regional souvenirs and handlooms, and enjoy a farewell dinner featuring the region's most celebrated desserts.`;
+        } else {
+          fallbackPlan[`day${d}`] = `Day ${d} of exploring the scenic highlights, local nature trails, and hidden culinary spots of ${selectedState} during the beautiful ${season} season.`;
+        }
+      }
+      setItinerary(fallbackPlan);
     } finally {
       setLoading(false);
     }
@@ -70,7 +77,12 @@ export default function PlannerPage() {
 
   const dayColors = ['#38bdf8', '#10b981', '#f59e0b'];
   const dayIcons = [WbSunnyIcon, LunchDiningIcon, NightlightIcon];
-  const dayTitles = ['Day 1: Arrival & Discovery', 'Day 2: Scenic Exploration', 'Day 3: Culture & Farewell'];
+
+  const getDayTitle = (index, total) => {
+    if (index === 0) return 'Day 1: Arrival & Discovery';
+    if (index === total - 1) return `Day ${total}: Culture & Farewell`;
+    return `Day ${index + 1}: Scenic & Culinary Exploration`;
+  };
 
   return (
     <Box sx={{ pt: { xs: 4, md: 6 }, pb: 10 }}>
@@ -225,7 +237,7 @@ export default function PlannerPage() {
                                 <DayIcon sx={{ color: dayColors[i % dayColors.length], fontSize: 20 }} />
                               </Box>
                               <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.05rem', color: dayColors[i % dayColors.length] }}>
-                                {dayTitles[i] || `Day ${i + 1}`}
+                                {getDayTitle(i, Object.keys(itinerary).length)}
                               </Typography>
                             </Box>
                             <Typography variant="body1" sx={{ color: '#e2e8f0', lineHeight: 1.8 }}>
