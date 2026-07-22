@@ -53,13 +53,17 @@ export default function FeaturedGrid({ states }) {
               <Box sx={{ position: 'relative', overflow: 'hidden' }}>
                 <CardMedia
                   component="img"
-                  height={220}
                   image={state.image}
                   alt={state.name}
                   className="card-image"
                   loading="lazy"
                   onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80"; }}
-                  sx={{ transition: 'transform 0.6s ease' }}
+                  sx={{
+                    height: 220,
+                    width: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.6s ease'
+                  }}
                 />
                 <Box sx={{ position: 'absolute', top: 12, right: 12 }}>
                   <ScoreBadge score={state.suitabilityScore} size="small" />

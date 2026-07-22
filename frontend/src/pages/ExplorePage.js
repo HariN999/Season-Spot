@@ -134,13 +134,17 @@ export default function ExplorePage() {
                         <Box sx={{ position: 'relative', overflow: 'hidden' }}>
                           <CardMedia
                             component="img"
-                            height={190}
                             image={state.image}
                             alt={state.name}
                             className="explore-img"
                             loading="lazy"
                             onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=80"; }}
-                            sx={{ transition: 'transform 0.5s ease' }}
+                            sx={{
+                              height: 190,
+                              width: '100%',
+                              objectFit: 'cover',
+                              transition: 'transform 0.5s ease'
+                            }}
                           />
                           <Box sx={{ position: 'absolute', top: 10, right: 10 }}>
                             <ScoreBadge score={state.suitabilityScore} size="small" />
