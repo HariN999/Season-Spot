@@ -9,33 +9,33 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import { SEASONS } from '../data/seasonalData';
 
 const SEASON_ICONS = {
-  Winter: <AcUnitIcon sx={{ color: '#00d2ff', fontSize: 18 }} />,
-  Summer: <WbSunnyIcon sx={{ color: '#ffaa00', fontSize: 18 }} />,
-  Monsoon: <ThunderstormIcon sx={{ color: '#00e676', fontSize: 18 }} />,
-  Spring: <LocalFloristIcon sx={{ color: '#ff4081', fontSize: 18 }} />
+  Winter: <AcUnitIcon sx={{ color: '#38bdf8', fontSize: 16 }} />,
+  Summer: <WbSunnyIcon sx={{ color: '#f59e0b', fontSize: 16 }} />,
+  Monsoon: <ThunderstormIcon sx={{ color: '#10b981', fontSize: 16 }} />,
+  Spring: <LocalFloristIcon sx={{ color: '#ec4899', fontSize: 16 }} />
 };
 
 export default function Navbar({ selectedSeason, onSelectSeason, onOpenItineraryModal }) {
   return (
-    <Box className="official-navbar">
+    <Box className="editorial-navbar">
       <Container maxWidth="xl" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 1.5 }}>
         {/* Brand Logo */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'pointer' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Box className="brand-icon-box">
-            <ExploreIcon sx={{ color: '#fff', fontSize: 26 }} />
+            <ExploreIcon sx={{ color: '#fff', fontSize: 22 }} />
           </Box>
           <Box>
-            <Typography variant="h6" className="brand-logo-text">
+            <Typography className="brand-logo-text">
               Season Spot
             </Typography>
-            <Typography variant="caption" className="brand-tagline">
-              India Seasonal Guide
+            <Typography className="brand-tagline">
+              Editorial Travel & Culinary Engine
             </Typography>
           </Box>
         </Box>
 
-        {/* Season Switcher Pills in Navbar */}
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1, bgcolor: 'rgba(255,255,255,0.06)', p: 0.8, borderRadius: '30px', border: '1px solid rgba(255,255,255,0.1)' }}>
+        {/* Season Switcher Pills */}
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1, bgcolor: 'rgba(255,255,255,0.04)', p: 0.8, borderRadius: '30px', border: '1px solid rgba(255,255,255,0.08)' }}>
           {SEASONS.map(s => {
             const isSelected = selectedSeason === s;
             return (
@@ -44,16 +44,15 @@ export default function Navbar({ selectedSeason, onSelectSeason, onOpenItinerary
                 icon={SEASON_ICONS[s]}
                 label={s}
                 onClick={() => onSelectSeason(s)}
-                className={`nav-season-chip ${isSelected ? 'active' : ''}`}
                 sx={{
                   cursor: 'pointer',
-                  fontWeight: 700,
+                  fontWeight: 600,
                   fontSize: '0.88rem',
                   px: 1,
                   py: 1.8,
                   borderRadius: '20px',
-                  bgcolor: isSelected ? 'primary.main' : 'transparent',
-                  color: isSelected ? '#fff' : 'rgba(255,255,255,0.7)',
+                  bgcolor: isSelected ? '#f59e0b' : 'transparent',
+                  color: isSelected ? '#0b0f19' : 'rgba(255,255,255,0.7)',
                   transition: 'all 0.3s ease'
                 }}
               />
@@ -64,20 +63,26 @@ export default function Navbar({ selectedSeason, onSelectSeason, onOpenItinerary
         {/* Action Button */}
         <Button
           variant="contained"
-          className="nav-ai-btn"
           onClick={onOpenItineraryModal}
-          startIcon={<AutoAwesomeIcon />}
+          startIcon={<AutoAwesomeIcon sx={{ color: '#f59e0b' }} />}
           sx={{
             borderRadius: '25px',
             textTransform: 'none',
             fontWeight: 700,
             px: 2.5,
             py: 0.9,
-            background: 'linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%)',
-            boxShadow: '0 4px 15px rgba(236, 72, 153, 0.4)'
+            bgcolor: 'rgba(245, 158, 11, 0.12)',
+            color: '#f59e0b',
+            border: '1px solid rgba(245, 158, 11, 0.3)',
+            boxShadow: 'none',
+            '&:hover': {
+              bgcolor: '#f59e0b',
+              color: '#0b0f19',
+              boxShadow: '0 4px 15px rgba(245, 158, 11, 0.4)'
+            }
           }}
         >
-          AI Itinerary
+          Craft 3-Day Itinerary
         </Button>
       </Container>
     </Box>
