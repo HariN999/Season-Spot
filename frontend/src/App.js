@@ -21,7 +21,7 @@ const DEFAULT_STATES = [
 ];
 
 function App() {
-  const [states, setStates] = useState(DEFAULT_STATES);
+  const [states] = useState(DEFAULT_STATES);
   const [selectedState, setSelectedState] = useState('Telangana');
   const [selectedSeason, setSelectedSeason] = useState('Monsoon');
   const [selectedVibe, setSelectedVibe] = useState('All');
