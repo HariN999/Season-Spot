@@ -62,6 +62,10 @@ export const apiFetch = async (endpoint, options = {}) => {
   } catch (error) {
     clearTimeout(timeoutId);
     if (error.name === 'AbortError') {
+      // If the caller explicitly aborted the request, let the AbortError bubble up
+      if (options.signal && options.signal.aborted) {
+        throw error;
+      }
       const timeoutErr = new Error('API Request timed out. Please try again.');
       timeoutErr.status = 408;
       timeoutErr.code = 'TIMEOUT';
