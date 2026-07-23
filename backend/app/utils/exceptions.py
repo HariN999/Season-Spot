@@ -69,7 +69,8 @@ def register_exception_handlers(app: FastAPI):
                     "message": exc.message,
                     "details": exc.details
                 }
-            }
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
         )
 
     @app.exception_handler(RequestValidationError)
@@ -84,7 +85,8 @@ def register_exception_handlers(app: FastAPI):
                     "message": "Validation Error",
                     "details": exc.errors()
                 }
-            }
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
         )
 
     @app.exception_handler(Exception)
@@ -99,5 +101,6 @@ def register_exception_handlers(app: FastAPI):
                     "message": "Internal Server Error",
                     "details": "An unexpected error occurred. Please try again later."
                 }
-            }
+            },
+            headers={"Access-Control-Allow-Origin": "*"}
         )
