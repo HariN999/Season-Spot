@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
-  Box, Container, Typography, Grid, Card, CardContent, Chip, Button, IconButton
+  Box, Container, Typography, Grid, Card, CardContent, Chip, Button, IconButton, LinearProgress
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -28,16 +28,63 @@ export default function StateDetailPage() {
   const { addViewed } = useRecentlyViewed();
 
   const decodedName = decodeURIComponent(stateName);
-  const state = getStateData(decodedName);
+  const localState = getStateData(decodedName);
   const seasonComparison = getSeasonComparison(decodedName);
   const nearbyStates = getNearbyStates(decodedName);
+
+  const [dynamicData, setDynamicData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (decodedName) addViewed(decodedName);
     window.scrollTo(0, 0);
   }, [decodedName, addViewed]);
 
-  if (!state) {
+  useEffect(() => {
+    const fetchDynamicData = async () => {
+      setLoading(true);
+      try {
+        const hostname = window.location.hostname;
+        const apiUrl = (hostname === 'localhost' || hostname === '127.0.0.1')
+          ? 'http://localhost:5000'
+          : '';
+        const res = await fetch(`${apiUrl}/api/info?state=${encodeURIComponent(decodedName)}&season=${season}`);
+        if (!res.ok) throw new Error("API failed");
+        const data = await res.json();
+        let resolved = Array.isArray(data) ? data[0] : data;
+        if (resolved) {
+          // Normalize food from strings to objects if needed
+          if (resolved.food && resolved.food.length > 0 && typeof resolved.food[0] === 'string') {
+            resolved.food = resolved.food.map(dishName => ({
+              name: dishName,
+              desc: `Famous seasonal delicacy in ${decodedName}.`,
+              tag: 'Local Favorite'
+            }));
+          }
+          // Normalize locations from strings to objects if needed
+          if (resolved.locations && resolved.locations.length > 0 && typeof resolved.locations[0] === 'string') {
+            resolved.locations = resolved.locations.map(locName => ({
+              name: locName,
+              highlight: `Must-visit travel destination in ${decodedName} during ${season}.`,
+              bestTime: 'Full Day'
+            }));
+          }
+          setDynamicData(resolved);
+        } else {
+          setDynamicData(null);
+        }
+      } catch (err) {
+        console.warn("Failed to fetch dynamic state data, using local dataset.", err);
+        setDynamicData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDynamicData();
+  }, [decodedName, season]);
+
+  if (!localState) {
     return (
       <Container maxWidth="lg" sx={{ py: 20, textAlign: 'center' }}>
         <Typography variant="h4">State not found</Typography>
@@ -46,8 +93,23 @@ export default function StateDetailPage() {
     );
   }
 
+  const state = dynamicData ? { ...localState, ...dynamicData } : localState;
+
   return (
     <Box>
+      {loading && (
+        <LinearProgress
+          color="primary"
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 2000,
+            height: 3,
+          }}
+        />
+      )}
       {/* Parallax Hero */}
       <Box sx={{ position: 'relative', height: { xs: '50vh', md: '65vh' }, overflow: 'hidden' }}>
         <Box

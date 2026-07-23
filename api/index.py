@@ -90,11 +90,63 @@ def generate_itinerary():
 def get_info():
     state = request.args.get('state', 'Telangana')
     season = request.args.get('season', 'Monsoon')
-    return jsonify([{
-        "state": state,
-        "season": season,
-        "message": "Use instant frontend dataset for <50ms response"
-    }])
+
+    if not api_key:
+        return jsonify({
+            "status": "success",
+            "vibe": "Heritage & Nature",
+            "suitabilityScore": 8.5,
+            "tempRange": "20°C - 30°C",
+            "weatherDesc": f"Pleasant weather in {state} during {season}, ideal for exploring cultural landmarks and sampling local cuisine.",
+            "food": [
+                {"name": f"{state} Regional Thali", "desc": "Authentic platter featuring seasonal vegetable curries, local grains & homemade pickles.", "tag": "Traditional"},
+                {"name": "Seasonal Sweet Delicacy", "desc": "Traditional regional dessert made with milk, nuts, and natural cane sugar.", "tag": "Dessert"}
+            ],
+            "locations": [
+                {"name": f"{state} Capital & Old Town", "highlight": "Historic architecture, bustling local bazaars & cultural centers.", "bestTime": "Morning"},
+                {"name": "Scenic Nature Sanctuary", "highlight": "Lush green parklands and scenic sunrise points.", "bestTime": "Sunset"}
+            ],
+            "travelTips": ["Carry lightweight cotton clothing and comfortable walking shoes", "Sample street food from recommended local vendors"]
+        })
+
+    try:
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        prompt = f"""
+        Provide comprehensive seasonal travel and culinary information for {state}, India, for the {season} season.
+        Return ONLY valid minified JSON format matching exactly this structure:
+        {{
+          "vibe": "e.g. Heritage, Beach, Wildlife, or Hill Station",
+          "suitabilityScore": 8.8,
+          "tempRange": "e.g. 24°C - 30°C",
+          "weatherDesc": "A descriptive overview of the climate and scenery during this season.",
+          "food": [
+            {{"name": "Dish Name", "desc": "Short appetizing description", "tag": "e.g. Street Food, Traditional, or Dessert"}}
+          ],
+          "locations": [
+            {{"name": "Location Name", "highlight": "What makes it special in this season", "bestTime": "e.g. Morning, Evening, or Full Day"}}
+          ],
+          "travelTips": [
+            "Insider travel tip 1",
+            "Insider travel tip 2"
+          ]
+        }}
+        """
+        response = model.generate_content(prompt)
+        clean_text = response.text.strip().replace('```json', '').replace('```', '')
+        parsed = json.loads(clean_text)
+        return jsonify({"status": "success", **parsed})
+    except Exception as e:
+        logging.error(f"Error fetching state info: {e}")
+        return jsonify({
+            "status": "fallback",
+            "vibe": "Heritage & Nature",
+            "suitabilityScore": 8.0,
+            "tempRange": "20°C - 30°C",
+            "weatherDesc": f"Pleasant climate in {state} during {season}.",
+            "food": [],
+            "locations": [],
+            "travelTips": []
+        })
 
 if __name__ == '__main__':
     app.run(port=5000)
