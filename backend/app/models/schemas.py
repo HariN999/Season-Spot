@@ -101,3 +101,17 @@ class KnowledgeMetadata(BaseModel):
     version: str = Field(..., description="Knowledge base version")
     lastUpdated: str = Field(..., description="ISO update timestamp")
     totalStates: int = Field(..., description="Total active states in registry")
+
+class StateComparisonItem(BaseModel):
+    name: str = Field(..., description="Name of the state")
+    capital: str = Field(..., description="Capital city")
+    travelScore: float = Field(..., description="Calculated travel score rating")
+    budgetLevel: str = Field(..., description="Calculated budget level category index")
+    accessibilityComments: str = Field(..., description="State accessibility notes")
+    bestMonths: List[str] = Field(..., description="Best months of the year to visit")
+    crowdLevel: str = Field(..., description="Average tourist density indicators")
+    airportsCount: int = Field(..., description="Number of nearby major airports available")
+    railwaysCount: int = Field(..., description="Number of nearby major railway stations available")
+
+class StateComparisonReport(BaseModel):
+    comparison: Dict[str, StateComparisonItem] = Field(..., description="States comparisons map keyed by state name")
