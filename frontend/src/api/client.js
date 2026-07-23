@@ -1,14 +1,15 @@
+
 const getApiBaseUrl = () => {
-  const hostname = window.location.hostname;
-  return (hostname === 'localhost' || hostname === '127.0.0.1')
-    ? 'http://localhost:8000'
-    : ''; // Serves relative on production deployment / Vercel
+  console.log("process.env =", process.env);
+  console.log("REACT_APP_API_URL =", process.env.REACT_APP_API_URL);
+
+  return process.env.REACT_APP_API_URL || "http://localhost:8000";
 };
 
 export const apiFetch = async (endpoint, options = {}) => {
   const baseUrl = getApiBaseUrl();
   const url = `${baseUrl}${endpoint}`;
-  
+
   const defaultHeaders = {
     'Content-Type': 'application/json',
   };
@@ -25,7 +26,7 @@ export const apiFetch = async (endpoint, options = {}) => {
   const timeoutMs = options.timeout || 15000;
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-  
+
   if (options.signal) {
     if (options.signal.aborted) {
       controller.abort();
@@ -35,7 +36,7 @@ export const apiFetch = async (endpoint, options = {}) => {
       });
     }
   }
-  
+
   config.signal = controller.signal;
 
   try {
@@ -49,7 +50,7 @@ export const apiFetch = async (endpoint, options = {}) => {
       } catch (e) {
         // Fallback for non-JSON responses
       }
-      
+
       const errorMsg = errData.error?.message || errData.message || `HTTP Request failed with status ${response.status}`;
       const err = new Error(errorMsg);
       err.status = response.status;
