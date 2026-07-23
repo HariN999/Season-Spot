@@ -40,6 +40,22 @@ class SeasonNotFound(ResourceNotFoundException):
     def __init__(self, state_name: str, season_name: str):
         super().__init__(f"Season '{season_name}' not found for state '{state_name}'.")
 
+class AIProviderError(AppException):
+    def __init__(self, message: str = "AI Provider error occurred", details: str = None):
+        super().__init__(502, message, details)
+
+class PromptGenerationError(AppException):
+    def __init__(self, message: str = "Prompt generation failed", details: str = None):
+        super().__init__(500, message, details)
+
+class InvalidAIResponse(AppException):
+    def __init__(self, message: str = "Invalid AI response structure", details: str = None):
+        super().__init__(502, message, details)
+
+class PromptTemplateNotFound(AppException):
+    def __init__(self, message: str = "Prompt template file missing", details: str = None):
+        super().__init__(500, message, details)
+
 def register_exception_handlers(app: FastAPI):
     @app.exception_handler(AppException)
     async def app_exception_handler(request: Request, exc: AppException):

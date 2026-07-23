@@ -115,3 +115,13 @@ class StateComparisonItem(BaseModel):
 
 class StateComparisonReport(BaseModel):
     comparison: Dict[str, StateComparisonItem] = Field(..., description="States comparisons map keyed by state name")
+
+class ItineraryRequest(BaseModel):
+    state: str = Field(..., min_length=2)
+    season: str = Field(..., pattern="^(Winter|Spring|Summer|Monsoon)$")
+    tripType: str
+    budget: str
+    duration: str = Field(..., pattern="^(3|5|7) Days$")
+
+class ItineraryPlan(BaseModel):
+    plan: Dict[str, str] = Field(..., description="Day-by-day itinerary keyed by day1, day2, etc.")
