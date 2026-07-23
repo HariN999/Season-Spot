@@ -1,0 +1,130 @@
+{
+  "name": "Andhra Pradesh",
+  "capital": "Amaravati",
+  "description": "Andhra Pradesh, located in south-eastern India, features scenic Eastern Ghats hill towns, historical Buddhist ruins, and India's longest coastal coastline along the Bay of Bengal.",
+  "heroImage": "https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1627894483216-2138af692e32?auto=format&fit=crop&w=600&q=80"
+  ],
+  "coordinates": {
+    "latitude": 15.9129,
+    "longitude": 79.7400
+  },
+  "bestMonths": ["October", "November", "December", "January", "February"],
+  "worstMonths": ["April", "May", "June"],
+  "temperature": {
+    "Winter": "18°C - 28°C",
+    "Spring": "22°C - 32°C",
+    "Summer": "28°C - 42°C",
+    "Monsoon": "24°C - 32°C"
+  },
+  "rainfall": {
+    "Winter": "Low",
+    "Spring": "None",
+    "Summer": "Occasional Thunderstorms",
+    "Monsoon": "High"
+  },
+  "crowdLevel": "Moderate",
+  "travelScore": 8.6,
+  "budgetLevel": "Affordable",
+  "tripDuration": "4-5 Days",
+  "airports": ["Visakhapatnam International Airport (VTZ)", "Vijayawada Airport (VGA)"],
+  "railwayStations": ["Vijayawada Junction (BZA)", "Visakhapatnam Junction (VSKP)"],
+  "nearbyStates": ["Telangana", "Karnataka", "Tamil Nadu", "Odisha"],
+  "languages": ["Telugu", "English"],
+  "cuisine": [
+    { "name": "Gongura Pachadi", "desc": "Tangy local sorrel leaves ground into a fiery chutney.", "tag": "Traditional" },
+    { "name": "Putharekulu", "desc": "Paper-thin wafer candy layers made from rice starch, sugar, and ghee.", "tag": "Traditional" }
+  ],
+  "streetFood": [
+    { "name": "Punugulu", "desc": "Crispy deep-fried fritters made from fermented rice and urad dal batter.", "tag": "Street Food" },
+    { "name": "Mirchi Bajji", "desc": "Deep-fried green chillies stuffed with onions and lemon juice.", "tag": "Street Food" }
+  ],
+  "desserts": [
+    { "name": "Bandar Laddu", "desc": "Smooth gram flour sweet melt-in-the-mouth specialty from Machilipatnam.", "tag": "Dessert" },
+    { "name": "Ariselu", "desc": "Traditional sweet made of rice flour, jaggery, and sesame seeds.", "tag": "Dessert" }
+  ],
+  "festivals": [
+    { "name": "Ugadi", "desc": "Telugu New Year celebrated with traditional Ugadi Pachadi parsing life flavors.", "month": "March" },
+    { "name": "Visakha Utsav", "desc": "Tourism festival organized along Visakhapatnam beaches showcasing local heritage.", "month": "December" }
+  ],
+  "hiddenGems": [
+    { "name": "Belum Caves", "desc": "Deep underground black limestone caves featuring natural formations.", "highlight": "Stunning passages and chambers.", "bestTime": "Morning" },
+    { "name": "Gadikota Fort", "desc": "Ruined historic fort complex overlooking deep river gorges.", "highlight": "Gorge viewpoints.", "bestTime": "Evening" }
+  ],
+  "topDestinations": [
+    { "name": "Araku Valley", "desc": "Mist-covered hill station famous for coffee plantations and tribal museums.", "highlight": "Beautiful valley views.", "bestTime": "Full Day" },
+    { "name": "Tirupati Temple", "desc": "World famous Venkateswara temple located on Tirumala hills.", "highlight": "Vibrant spiritual atmosphere.", "bestTime": "Morning" }
+  ],
+  "packingList": ["Lightweight cottons", "Comfortable walking shoes", "Sunscreen and sunglasses"],
+  "travelTips": [
+    "Always check train bookings well in advance for Tirupati trip",
+    "Sample local spicy Andhra food thali with caution if sensitive to spice"
+  ],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102",
+    "Tourism Helpline": "1800-42-545454"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Heritage & Sightseeing",
+      "suitabilityScore": 9.5,
+      "tempRange": "18°C - 26°C",
+      "weatherDesc": "Cool breeze from the coast, pleasant weather across Araku hills and heritage temple sites.",
+      "food": [
+        { "name": "Gongura Mutton", "desc": "Spicy mutton curry cooked with sorrel leaves.", "tag": "Traditional" }
+      ],
+      "locations": [
+        { "name": "Araku Valley", "highlight": "Lush coffee valleys and fresh cool hill mist.", "bestTime": "Morning" }
+      ],
+      "travelTips": ["Carry light woolen jacket for Araku night breeze"]
+    },
+    "Spring": {
+      "vibe": "Culture & Local Festivals",
+      "suitabilityScore": 8.5,
+      "tempRange": "22°C - 32°C",
+      "weatherDesc": "Warm temperatures, pleasant evenings, and vibrant Ugadi cultural celebrations.",
+      "food": [
+        { "name": "Ugadi Pachadi", "desc": "New Year chutney combining six different tastes.", "tag": "Festive" }
+      ],
+      "locations": [
+        { "name": "Amaravati Buddhist Heritage Sites", "highlight": "Peaceful stupas illuminated for spring events.", "bestTime": "Morning" }
+      ],
+      "travelTips": ["Enjoy the temple festivals but stay hydrated during the day"]
+    },
+    "Summer": {
+      "vibe": "Coastal Escapes & Indoor Museums",
+      "suitabilityScore": 5.0,
+      "tempRange": "28°C - 42°C",
+      "weatherDesc": "Hot humid coastal breeze, high heatwaves. Best to visit hill stations or air-conditioned museums.",
+      "food": [
+        { "name": "Nannari Sharbat", "desc": "Cooling herbal root drink with lemon juice.", "tag": "Beverage" }
+      ],
+      "locations": [
+        { "name": "Kondapalli Craft Village", "highlight": "Watch toy-making workshops inside shaded setups.", "bestTime": "Morning" }
+      ],
+      "travelTips": ["Avoid walking outdoors between 12 PM and 4 PM"]
+    },
+    "Monsoon": {
+      "vibe": "Waterfall Treks & Nature Trails",
+      "suitabilityScore": 7.5,
+      "tempRange": "24°C - 32°C",
+      "weatherDesc": "Frequent rainfall, lush green valleys, and spectacular roaring waterfalls across Eastern Ghats.",
+      "food": [
+        { "name": "Mirchi Bajji", "desc": "Spicy stuffed fritters, perfect for rainy evenings.", "tag": "Street Food" }
+      ],
+      "locations": [
+        { "name": "Talakona Waterfalls", "highlight": "Spectacular forest canopy walk and waterfalls.", "bestTime": "Afternoon" }
+      ],
+      "travelTips": ["Carry raincoats and caution for slippery trekking rocks"]
+    }
+  },
+  "weatherWarnings": ["Coastal cyclones during October-November", "Severe heatwaves in May"],
+  "accessibility": {
+    "wheelchairAccess": false,
+    "comments": "Ramp access is mostly limited to newer Visakhapatnam beaches and main Tirupati lines."
+  },
+  "photographySpots": ["Bheemili Beach beachside structures", "Katiki Waterfalls", "Belum Caves chambers"]
+}

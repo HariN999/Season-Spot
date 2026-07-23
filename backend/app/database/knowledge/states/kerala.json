@@ -1,0 +1,130 @@
+{
+  "name": "Kerala",
+  "capital": "Thiruvananthapuram",
+  "description": "Kerala, widely known as God's Own Country, is a tropical paradise featuring serene palm-fringed backwaters, spice-covered Western Ghats hill stations, and Ayurvedic wellness centers.",
+  "heroImage": "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=600&q=80"
+  ],
+  "coordinates": {
+    "latitude": 10.8505,
+    "longitude": 76.2711
+  },
+  "bestMonths": ["September", "October", "November", "December", "January", "February", "March"],
+  "worstMonths": ["June", "July"],
+  "temperature": {
+    "Winter": "22°C - 31°C",
+    "Spring": "24°C - 33°C",
+    "Summer": "26°C - 35°C",
+    "Monsoon": "22°C - 29°C"
+  },
+  "rainfall": {
+    "Winter": "Low",
+    "Spring": "Scattered Pre-monsoon showers",
+    "Summer": "Warm and Humid",
+    "Monsoon": "Heavy Torrential Rains"
+  },
+  "crowdLevel": "High",
+  "travelScore": 9.2,
+  "budgetLevel": "Moderate to Luxury",
+  "tripDuration": "5-6 Days",
+  "airports": ["Cochin International Airport (COK)", "Trivandrum International Airport (TRV)", "Calicut International Airport (CCJ)"],
+  "railwayStations": ["Ernakulam Junction (ERS)", "Trivandrum Central (TVC)", "Thrissur Railway Station (TCR)"],
+  "nearbyStates": ["Tamil Nadu", "Karnataka"],
+  "languages": ["Malayalam", "English"],
+  "cuisine": [
+    { "name": "Avial", "desc": "Thick mixture of local vegetables and coconut seasoned with coconut oil and curry leaves.", "tag": "Traditional" },
+    { "name": "Karimeen Pollichathu", "desc": "Pearl spot fish marinated in spicy paste, wrapped inside banana leaves and grilled.", "tag": "Traditional" }
+  ],
+  "streetFood": [
+    { "name": "Pazham Pori", "desc": "Crispy sweet ripe banana fritters fried in light turmeric batter.", "tag": "Street Food" },
+    { "name": "Thattu Dosa", "desc": "Small, thick dosas served hot with spicy coconut chutney and sambar.", "tag": "Street Food" }
+  ],
+  "desserts": [
+    { "name": "Ada Pradhaman", "desc": "Traditional sweet payasam made of rice flakes, sweet jaggery syrup, and fresh coconut milk.", "tag": "Dessert" },
+    { "name": "Unniyappam", "desc": "Small sweet round fritter made of rice, jaggery, banana, and roasted coconut pieces.", "tag": "Dessert" }
+  ],
+  "festivals": [
+    { "name": "Onam", "desc": "Annual harvest festival celebrated with grand floral carpets and elaborate Sadya feasts.", "month": "August" },
+    { "name": "Vishu", "desc": "Malayali New Year celebrated withVishukkani arrangements bringing good luck.", "month": "April" }
+  ],
+  "hiddenGems": [
+    { "name": "Marari Beach", "desc": "Under-developed clean white sand beach close to Alappuzha backwaters.", "highlight": "Serene coconut groves.", "bestTime": "Evening" },
+    { "name": "Gavi", "desc": "Quiet eco-tourism forest village famous for pristine lake boat rides and wildlife sightings.", "highlight": "Pristine nature trails.", "bestTime": "Full Day" }
+  ],
+  "topDestinations": [
+    { "name": "Munnar", "desc": "Famous hill station carpeted with sprawling green tea plantations and cool mist valleys.", "highlight": "Scenic tea garden vistas.", "bestTime": "Full Day" },
+    { "name": "Alappuzha Houseboats", "desc": "Cruising through narrow canal channels inside traditional thatched-roof wooden boats.", "highlight": "Floating through backwaters.", "bestTime": "Full Day" }
+  ],
+  "packingList": ["Light cotton clothes", "Rain umbrella or poncho", "Mosquito repellent", "Flip flops"],
+  "travelTips": [
+    "Always reserve houseboat bookings in advance during peak Winter months",
+    "Ayurvedic treatments should only be taken from government-accredited centers"
+  ],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102",
+    "Coastal Police Helpline": "1093"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Backwaters & Beaches",
+      "suitabilityScore": 9.8,
+      "tempRange": "22°C - 30°C",
+      "weatherDesc": "Warm, sunny days with low humidity. Perfect for cruising on houseboats and swimming in Kovalam beaches.",
+      "food": [
+        { "name": "Kerala Sadya", "desc": "Elaborate vegetarian feast served on banana leaves.", "tag": "Traditional" }
+      ],
+      "locations": [
+        { "name": "Alappuzha Backwaters", "highlight": "Serene boat cruising in winter breeze.", "bestTime": "Full Day" }
+      ],
+      "travelTips": ["Advance booking is mandatory for all major winter destinations"]
+    },
+    "Spring": {
+      "vibe": "Hill Station Exploration",
+      "suitabilityScore": 8.8,
+      "tempRange": "24°C - 32°C",
+      "weatherDesc": "Pleasant moderate temperatures across the Western Ghats hills, blooming wild valley flowers.",
+      "food": [
+        { "name": "Puttu with Kadala Curry", "desc": "Steamed rice cake cylinders served alongside spicy black chickpeas.", "tag": "Traditional" }
+      ],
+      "locations": [
+        { "name": "Munnar Tea Valleys", "highlight": "Scenic morning tea picking walks.", "bestTime": "Morning" }
+      ],
+      "travelTips": ["Carry lightweight cottons with a light sweater for hill nights"]
+    },
+    "Summer": {
+      "vibe": "Eco-Tourism Forest Retreats",
+      "suitabilityScore": 6.0,
+      "tempRange": "26°C - 35°C",
+      "weatherDesc": "Hot and highly humid conditions along coastal lines. Shaded forest valleys like Periyar Tiger Reserve are cooler.",
+      "food": [
+        { "name": "Sambharam", "desc": "Cooling spiced buttermilk infused with ginger and curry leaves.", "tag": "Beverage" }
+      ],
+      "locations": [
+        { "name": "Thekkady Periyar Reserve", "highlight": "Bamboo rafting rides inside cool forest rivers.", "bestTime": "Morning" }
+      ],
+      "travelTips": ["Drink plenty of coconut water to prevent heat dehydration"]
+    },
+    "Monsoon": {
+      "vibe": "Ayurveda Wellness & Waterfalls",
+      "suitabilityScore": 9.0,
+      "tempRange": "22°C - 28°C",
+      "weatherDesc": "Heavy pouring rain, rich wet greenery, roaring full waterfalls. Excellent season for traditional Ayurvedic therapies.",
+      "food": [
+        { "name": "Karkidaka Kanji", "desc": "Medicinal rice porridge loaded with restorative spices.", "tag": "Ayurvedic" }
+      ],
+      "locations": [
+        { "name": "Athirappilly Waterfalls", "highlight": "Spectacular roaring waterfalls at peak flow.", "bestTime": "Afternoon" }
+      ],
+      "travelTips": ["Ayurveda treatments are highly recommended during this cool monsoon weather"]
+    }
+  },
+  "weatherWarnings": ["Torrential flash flooding risk in July-August", "Rough sea warnings for coastal fishermen"],
+  "accessibility": {
+    "wheelchairAccess": false,
+    "comments": "Access is mostly limited in boats, but premium resorts offer ramp access."
+  },
+  "photographySpots": ["Munnar Lockhart Gap", "Alappuzha canal palms", "Chinese Fishing Nets in Kochi"]
+}

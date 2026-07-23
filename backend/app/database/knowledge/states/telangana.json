@@ -1,0 +1,130 @@
+{
+  "name": "Telangana",
+  "capital": "Hyderabad",
+  "description": "Telangana, a historic region in Deccan plateau, is known for its majestic Charminar, Kakatiya stone arches, rich royal culture, and dynamic technology hubs.",
+  "heroImage": "https://images.unsplash.com/photo-1606210122157-797f1fdfb1d6?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1606210122157-797f1fdfb1d6?auto=format&fit=crop&w=600&q=80",
+    "https://images.unsplash.com/photo-1624314138470-5a2f24623f10?auto=format&fit=crop&w=600&q=80"
+  ],
+  "coordinates": {
+    "latitude": 17.3850,
+    "longitude": 78.4867
+  },
+  "bestMonths": ["October", "November", "December", "January", "February"],
+  "worstMonths": ["April", "May"],
+  "temperature": {
+    "Winter": "15°C - 28°C",
+    "Spring": "22°C - 33°C",
+    "Summer": "28°C - 43°C",
+    "Monsoon": "23°C - 31°C"
+  },
+  "rainfall": {
+    "Winter": "Very Low",
+    "Spring": "None",
+    "Summer": "Scattered Showers",
+    "Monsoon": "Moderate to High"
+  },
+  "crowdLevel": "Moderate to High",
+  "travelScore": 8.8,
+  "budgetLevel": "Moderate",
+  "tripDuration": "3-4 Days",
+  "airports": ["Rajiv Gandhi International Airport (HYD)"],
+  "railwayStations": ["Secunderabad Junction (SC)", "Hyderabad Deccan Nampally (HYB)", "Kacheguda (KCG)"],
+  "nearbyStates": ["Andhra Pradesh", "Karnataka", "Maharashtra", "Chhattisgarh"],
+  "languages": ["Telugu", "Urdu", "Hindi", "English"],
+  "cuisine": [
+    { "name": "Hyderabadi Biryani", "desc": "Savory basmati rice layered with slow-cooked spiced meat and saffron.", "tag": "Traditional" },
+    { "name": "Haleem", "desc": "Rich, slow-cooked paste made of wheat, barley, meat, and lentils crushed with ghee.", "tag": "Traditional" }
+  ],
+  "streetFood": [
+    { "name": "Irani Chai & Osmania Biscuits", "desc": "Rich, creamy tea served with sweet-salty Osmania bakery biscuits.", "tag": "Street Food" },
+    { "name": "Double Ka Meetha", "desc": "Bread pudding dessert soaked in hot saffron-infused milk and cardamom.", "tag": "Street Food" }
+  ],
+  "desserts": [
+    { "name": "Qubani Ka Meetha", "desc": "Sweet compote made from dried apricots, typically served with ice cream.", "tag": "Dessert" },
+    { "name": "Sheer Khurma", "desc": "Festive vermicelli pudding cooked with milk, dates, and chopped nuts.", "tag": "Dessert" }
+  ],
+  "festivals": [
+    { "name": "Bonalu", "desc": "Vibrant thanksgiving festival dedicated to Goddess Mahakali with decorated pots.", "month": "July" },
+    { "name": "Bathukamma", "desc": "Flower festival celebrated by women structuring beautiful concentric seasonal floral stacks.", "month": "October" }
+  ],
+  "hiddenGems": [
+    { "name": "Bhongir Fort", "desc": "Enormous monolithic rock hill fort offering trekking routes.", "highlight": "Vast rock structures.", "bestTime": "Morning" },
+    { "name": "Kondagattu", "desc": "Scenic hill temple surrounded by thick forest reserve ranges.", "highlight": "Panoramic valley views.", "bestTime": "Evening" }
+  ],
+  "topDestinations": [
+    { "name": "Golconda Fort", "desc": "Historic fortress complex famous for acoustic sound properties and royal palaces.", "highlight": "Acoustic clap echoes.", "bestTime": "Evening" },
+    { "name": "Ramappa Temple", "desc": "UNESCO World Heritage site known for floating brick designs and detailed black basalt stone carvings.", "highlight": "Floating bricks.", "bestTime": "Full Day" }
+  ],
+  "packingList": ["Light breathable cottons", "Comfortable walking shoes", "Sun hat and cooling glasses"],
+  "travelTips": [
+    "Always plan to reach Golconda Fort by 4 PM to secure light and sound show slots",
+    "Autos operate heavily in Hyderabad; settle on fare before boarding if not using apps"
+  ],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102",
+    "Women Safety Wing": "1091"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Heritage & Royal Trails",
+      "suitabilityScore": 9.8,
+      "tempRange": "15°C - 26°C",
+      "weatherDesc": "Cool crisp breeze across Hyderabad plateau, pleasant sun, perfect for Golconda climbs and heritage walks.",
+      "food": [
+        { "name": "Nihari with Roti", "desc": "Slow-cooked meat stew served with traditional local flatbread.", "tag": "Traditional" }
+      ],
+      "locations": [
+        { "name": "Golconda Fort", "highlight": "Fascinating history and pleasant sunset terrace view.", "bestTime": "Evening" }
+      ],
+      "travelTips": ["Enjoy open-air sound shows without worrying about the heat"]
+    },
+    "Spring": {
+      "vibe": "Royal Gardens & Crafts",
+      "suitabilityScore": 8.0,
+      "tempRange": "20°C - 31°C",
+      "weatherDesc": "Warm pleasant spring days, sweet night breezes, perfect for evening craft shopping at Shilparamam.",
+      "food": [
+        { "name": "Lassi", "desc": "Sweet cooling yogurt beverage topped with thick cream.", "tag": "Beverage" }
+      ],
+      "locations": [
+        { "name": "Qutb Shahi Tombs", "highlight": "Historic tombs nestled in landscaped garden borders.", "bestTime": "Morning" }
+      ],
+      "travelTips": ["Plan museum visits during early afternoons to escape the sun"]
+    },
+    "Summer": {
+      "vibe": "Museums & Palace Escapes",
+      "suitabilityScore": 4.5,
+      "tempRange": "28°C - 43°C",
+      "weatherDesc": "Scorching dry heat, heavy sun waves. Best to explore air-conditioned indoor sights like Salar Jung Museum.",
+      "food": [
+        { "name": "Qubani Ka Meetha", "desc": "Apricot sweet served chilled with ice cream.", "tag": "Dessert" }
+      ],
+      "locations": [
+        { "name": "Chowmahalla Palace", "highlight": "Stunning cool marble corridors and vintage chandeliers.", "bestTime": "Morning" }
+      ],
+      "travelTips": ["Carry water bottles and check out local sweet cooling drinks"]
+    },
+    "Monsoon": {
+      "vibe": "Lake Views & Forest Drives",
+      "suitabilityScore": 7.8,
+      "tempRange": "23°C - 31°C",
+      "weatherDesc": "Frequent moderate rain showers, cooling down the plateau. The lakes and surrounding forest ranges become vibrant green.",
+      "food": [
+        { "name": "Mirchi Bajji & Irani Chai", "desc": "Spicy green chili fritters served alongside hot milk tea.", "tag": "Street Food" }
+      ],
+      "locations": [
+        { "name": "Ananthagiri Hills", "highlight": "Scenic monsoon mist drives through dense forests.", "bestTime": "Full Day" }
+      ],
+      "travelTips": ["Expect traffic delays in city center roads during heavy showers"]
+    }
+  },
+  "weatherWarnings": ["Dry intense heat waves in May"],
+  "accessibility": {
+    "wheelchairAccess": true,
+    "comments": "Main monuments like Golconda Fort have step restrictions, but modern hubs (like museums and airports) are fully ramped."
+  },
+  "photographySpots": ["Charminar central arch vista", "Golconda sunset viewpoint", "Ramappa temple pillar carvings"]
+}

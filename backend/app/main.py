@@ -27,9 +27,14 @@ app.add_middleware(
 # Register central error mapping handlers
 register_exception_handlers(app)
 
+from app.repositories.dependency import state_repository
+
 @app.on_event("startup")
 async def startup_event():
     logger.info(f"Season Spot FastAPI backend starting up in environment: {settings.app_env}")
+    # Load and validate the entire deterministic knowledge base
+    state_repository.load_all()
+    logger.info("Knowledge base successfully validated and loaded on startup.")
 
 @app.get("/")
 async def root():
