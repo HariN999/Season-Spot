@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Box, Container, Typography, Grid, Card, CardContent, Chip, Button, IconButton, LinearProgress
@@ -15,6 +15,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useSeason } from '../context/SeasonContext';
 import { useSeasonalData } from '../hooks/useSeasonalData';
 import { useFavorites, useRecentlyViewed } from '../hooks/useLocalStorage';
+import { useStateDetails } from '../hooks/useStateDetails';
 import ScoreBadge from '../components/shared/ScoreBadge';
 import SeasonChip from '../components/shared/SeasonChip';
 import SectionHeading from '../components/shared/SectionHeading';
@@ -23,77 +24,62 @@ export default function StateDetailPage() {
   const { stateName } = useParams();
   const navigate = useNavigate();
   const { season } = useSeason();
-  const { getStateData, getSeasonComparison, getNearbyStates } = useSeasonalData(season);
+  const { getNearbyStates } = useSeasonalData(season);
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addViewed } = useRecentlyViewed();
 
   const decodedName = decodeURIComponent(stateName);
-  const localState = getStateData(decodedName);
-  const seasonComparison = getSeasonComparison(decodedName);
+  const { stateData: state, loading, error } = useStateDetails(decodedName);
   const nearbyStates = getNearbyStates(decodedName);
-
-  const [dynamicData, setDynamicData] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (decodedName) addViewed(decodedName);
     window.scrollTo(0, 0);
   }, [decodedName, addViewed]);
 
-  useEffect(() => {
-    const fetchDynamicData = async () => {
-      setLoading(true);
-      try {
-        const hostname = window.location.hostname;
-        const apiUrl = (hostname === 'localhost' || hostname === '127.0.0.1')
-          ? 'http://localhost:5000'
-          : '';
-        const res = await fetch(`${apiUrl}/api/info?state=${encodeURIComponent(decodedName)}&season=${season}`);
-        if (!res.ok) throw new Error("API failed");
-        const data = await res.json();
-        let resolved = Array.isArray(data) ? data[0] : data;
-        if (resolved) {
-          // Normalize food from strings to objects if needed
-          if (resolved.food && resolved.food.length > 0 && typeof resolved.food[0] === 'string') {
-            resolved.food = resolved.food.map(dishName => ({
-              name: dishName,
-              desc: `Famous seasonal delicacy in ${decodedName}.`,
-              tag: 'Local Favorite'
-            }));
-          }
-          // Normalize locations from strings to objects if needed
-          if (resolved.locations && resolved.locations.length > 0 && typeof resolved.locations[0] === 'string') {
-            resolved.locations = resolved.locations.map(locName => ({
-              name: locName,
-              highlight: `Must-visit travel destination in ${decodedName} during ${season}.`,
-              bestTime: 'Full Day'
-            }));
-          }
-          setDynamicData(resolved);
-        } else {
-          setDynamicData(null);
-        }
-      } catch (err) {
-        console.warn("Failed to fetch dynamic state data, using local dataset.", err);
-        setDynamicData(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDynamicData();
-  }, [decodedName, season]);
-
-  if (!localState) {
+  if (loading) {
     return (
       <Container maxWidth="lg" sx={{ py: 20, textAlign: 'center' }}>
-        <Typography variant="h4">State not found</Typography>
-        <Button onClick={() => navigate('/explore')} sx={{ mt: 2 }}>Back to Explore</Button>
+        <LinearProgress color="primary" sx={{ mb: 4 }} />
+        <Typography variant="h6" color="text.secondary">Loading authentic seasonal insights...</Typography>
       </Container>
     );
   }
 
-  const state = dynamicData ? { ...localState, ...dynamicData } : localState;
+  if (error || !state) {
+    return (
+      <Container maxWidth="lg" sx={{ py: 20, textAlign: 'center' }}>
+        <Typography variant="h5" color="error" gutterBottom>
+          Failed to load travel guide
+        </Typography>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+          {error || "State profile not found."}
+        </Typography>
+        <Button variant="outlined" onClick={() => window.location.reload()} sx={{ mr: 2 }}>
+          Retry Request
+        </Button>
+        <Button variant="contained" onClick={() => navigate('/explore')}>
+          Back to Explore
+        </Button>
+      </Container>
+    );
+  }
+
+  const seasonComparison = ["Winter", "Spring", "Summer", "Monsoon"].map(s => ({
+    season: s,
+    suitabilityScore: state.seasons?.[s]?.suitabilityScore || 8.0,
+    tempRange: state.seasons?.[s]?.tempRange || state.temperature?.[s] || '20°C - 30°C'
+  }));
+
+  const currentSeason = state.seasons?.[season] || {};
+  const suitabilityScore = currentSeason.suitabilityScore || state.travelScore || 8.0;
+  const tempRange = currentSeason.tempRange || state.temperature?.[season] || '20°C - 30°C';
+  const vibe = currentSeason.vibe || 'Heritage';
+  const weatherDesc = currentSeason.weatherDesc || state.description;
+  const food = currentSeason.food || state.cuisine || [];
+  const locations = currentSeason.locations || state.topDestinations || [];
+  const travelTips = currentSeason.travelTips || state.travelTips || [];
+  const heroImage = state.heroImage || state.image;
 
   return (
     <Box>
@@ -115,7 +101,7 @@ export default function StateDetailPage() {
         <Box
           sx={{
             position: 'absolute', inset: 0,
-            backgroundImage: `url(${state.image})`,
+            backgroundImage: `url(${heroImage})`,
             backgroundSize: 'cover', backgroundPosition: 'center',
             backgroundAttachment: { md: 'fixed' },
             '&::after': {
@@ -144,11 +130,11 @@ export default function StateDetailPage() {
 
             {/* Quick Stats */}
             <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap', alignItems: 'center' }}>
-              <ScoreBadge score={state.suitabilityScore} />
+              <ScoreBadge score={suitabilityScore} />
               <Chip icon={<ThermostatIcon sx={{ color: '#f59e0b !important', fontSize: '16px !important' }} />}
-                label={state.tempRange} size="small"
+                label={tempRange} size="small"
                 sx={{ bgcolor: 'rgba(255,255,255,0.1)', color: '#f8fafc', fontWeight: 600, backdropFilter: 'blur(4px)' }} />
-              <Chip label={state.vibe || 'Heritage'} size="small"
+              <Chip label={vibe} size="small"
                 sx={{ bgcolor: 'rgba(245,158,11,0.15)', color: '#f59e0b', fontWeight: 600 }} />
               <SeasonChip season={season} selected size="small" />
             </Box>
@@ -161,7 +147,7 @@ export default function StateDetailPage() {
         {/* Overview */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <Typography variant="body1" sx={{ fontSize: '1.15rem', lineHeight: 1.8, maxWidth: 700, mb: 6, color: '#94a3b8' }}>
-            {state.weatherDesc}
+            {weatherDesc}
           </Typography>
         </motion.div>
 
@@ -188,12 +174,12 @@ export default function StateDetailPage() {
         </Box>
 
         {/* Regional Cuisine */}
-        {state.food && state.food.length > 0 && (
+        {food && food.length > 0 && (
           <Box sx={{ mb: 8 }}>
             <SectionHeading overline="Regional Gastronomy" title="Signature Seasonal Dishes"
               subtitle={`Authentic culinary experiences in ${state.name} during ${season}.`} />
             <Grid container spacing={3}>
-              {state.food.map((dish, i) => (
+              {food.map((dish, i) => (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`${dish.name}-${i}`}>
                   <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
@@ -215,12 +201,12 @@ export default function StateDetailPage() {
         )}
 
         {/* Destinations */}
-        {state.locations && state.locations.length > 0 && (
+        {locations && locations.length > 0 && (
           <Box sx={{ mb: 8 }}>
             <SectionHeading overline="Must-Visit" title="Top Destinations"
               subtitle={`Best places to explore in ${state.name} during ${season}.`} />
             <Grid container spacing={3}>
-              {state.locations.map((loc, i) => (
+              {locations.map((loc, i) => (
                 <Grid size={{ xs: 12, sm: 6, md: 4 }} key={`${loc.name}-${i}`}>
                   <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
@@ -240,11 +226,11 @@ export default function StateDetailPage() {
         )}
 
         {/* Travel Tips */}
-        {state.travelTips && state.travelTips.length > 0 && (
+        {travelTips && travelTips.length > 0 && (
           <Box sx={{ mb: 8 }}>
             <SectionHeading overline="Insider Tips" title="Travel Essentials" />
             <Grid container spacing={2}>
-              {state.travelTips.map((tip, i) => (
+              {travelTips.map((tip, i) => (
                 <Grid size={{ xs: 12, md: 4 }} key={i}>
                   <Box sx={{ p: 2.5, bgcolor: '#111827', borderRadius: 3, borderLeft: '3px solid #f59e0b', height: '100%' }}>
                     <Typography variant="body2" sx={{ color: '#f8fafc' }}>

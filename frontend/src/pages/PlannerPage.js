@@ -12,6 +12,7 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import { useSeason } from '../context/SeasonContext';
+import { usePlanner } from '../hooks/usePlanner';
 import SectionHeading from '../components/shared/SectionHeading';
 import SeasonChip from '../components/shared/SeasonChip';
 
@@ -37,41 +38,19 @@ export default function PlannerPage() {
   const [tripType, setTripType] = useState('Foodie & Cultural');
   const [budget, setBudget] = useState('Moderate');
   const [duration, setDuration] = useState('3 Days');
-  const [loading, setLoading] = useState(false);
-  const [itinerary, setItinerary] = useState(null);
-  const [error, setError] = useState('');
+  const { plan: itinerary, loading, error, generate, reset } = usePlanner();
 
   const handleGenerate = async () => {
-    setLoading(true);
-    setError('');
-    setItinerary(null);
-
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || ''}/api/itinerary`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ state: selectedState, season, tripType, budget, duration }),
+      await generate({
+        state: selectedState,
+        season,
+        tripType,
+        budget,
+        duration
       });
-
-      if (!response.ok) throw new Error('Server error');
-      const data = await response.json();
-      setItinerary(data.plan);
     } catch (err) {
-      // Smart local fallback
-      const days = parseInt(duration) || 3;
-      const fallbackPlan = {};
-      for (let d = 1; d <= days; d++) {
-        if (d === 1) {
-          fallbackPlan[`day${d}`] = `Arrival in ${selectedState} during ${season}. Explore local heritage sights, sample iconic regional dishes at long-standing eateries, and take an evening stroll through spice and handicraft bazaars.`;
-        } else if (d === days) {
-          fallbackPlan[`day${d}`] = `Cultural immersion day in ${selectedState}. Visit historic monuments, shop for regional souvenirs and handlooms, and enjoy a farewell dinner featuring the region's most celebrated desserts.`;
-        } else {
-          fallbackPlan[`day${d}`] = `Day ${d} of exploring the scenic highlights, local nature trails, and hidden culinary spots of ${selectedState} during the beautiful ${season} season.`;
-        }
-      }
-      setItinerary(fallbackPlan);
-    } finally {
-      setLoading(false);
+      console.warn("Itinerary generation failed, service fallback was activated.", err);
     }
   };
 
@@ -254,7 +233,7 @@ export default function PlannerPage() {
                       sx={{ borderRadius: '24px', px: 3, borderColor: 'rgba(255,255,255,0.2)', color: '#94a3b8' }}>
                       Regenerate
                     </Button>
-                    <Button startIcon={<ArrowBackIcon />} onClick={() => { setActiveStep(0); setItinerary(null); }}
+                    <Button startIcon={<ArrowBackIcon />} onClick={() => { setActiveStep(0); reset(); }}
                       sx={{ borderRadius: '24px', px: 3, color: '#94a3b8' }}>
                       New Trip
                     </Button>
