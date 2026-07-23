@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Box, Container, Typography, Grid, Card, CardContent, Chip, Button, IconButton, LinearProgress
@@ -19,6 +19,7 @@ import { useStateDetails } from '../hooks/useStateDetails';
 import ScoreBadge from '../components/shared/ScoreBadge';
 import SeasonChip from '../components/shared/SeasonChip';
 import SectionHeading from '../components/shared/SectionHeading';
+import { STATE_IMAGES, DEFAULT_IMAGE } from '../data/stateImages';
 
 export default function StateDetailPage() {
   const { stateName } = useParams();
@@ -31,11 +32,19 @@ export default function StateDetailPage() {
   const decodedName = decodeURIComponent(stateName);
   const { stateData: state, loading, error } = useStateDetails(decodedName);
   const nearbyStates = getNearbyStates(decodedName);
+  const editedHeroImage = STATE_IMAGES[state?.name] || STATE_IMAGES[decodedName];
+  const fallbackHeroImage = state?.heroImage || state?.image || DEFAULT_IMAGE;
+  const requestedHeroImage = editedHeroImage || fallbackHeroImage;
+  const [coverImage, setCoverImage] = useState(requestedHeroImage);
 
   useEffect(() => {
     if (decodedName) addViewed(decodedName);
     window.scrollTo(0, 0);
   }, [decodedName, addViewed]);
+
+  useEffect(() => {
+    setCoverImage(requestedHeroImage);
+  }, [requestedHeroImage]);
 
   if (loading) {
     return (
@@ -79,8 +88,6 @@ export default function StateDetailPage() {
   const food = currentSeason.food || state.cuisine || [];
   const locations = currentSeason.locations || state.topDestinations || [];
   const travelTips = currentSeason.travelTips || state.travelTips || [];
-  const heroImage = state.heroImage || state.image;
-
   return (
     <Box>
       {loading && (
@@ -99,15 +106,22 @@ export default function StateDetailPage() {
       {/* Parallax Hero */}
       <Box sx={{ position: 'relative', height: { xs: '50vh', md: '65vh' }, overflow: 'hidden' }}>
         <Box
+          component="img"
+          src={coverImage}
+          alt={`${state.name} cover`}
+          onError={() => {
+            if (coverImage !== DEFAULT_IMAGE) setCoverImage(DEFAULT_IMAGE);
+          }}
           sx={{
             position: 'absolute', inset: 0,
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: 'cover', backgroundPosition: 'center',
-            backgroundAttachment: { md: 'fixed' },
-            '&::after': {
-              content: '""', position: 'absolute', inset: 0,
-              background: 'linear-gradient(to bottom, rgba(11,15,25,0.2) 0%, rgba(11,15,25,0.7) 60%, #0b0f19 100%)',
-            },
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+          }}
+        />
+        <Box
+          sx={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to bottom, rgba(11,15,25,0.2) 0%, rgba(11,15,25,0.7) 60%, #0b0f19 100%)',
           }}
         />
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', pb: 5 }}>
