@@ -27,7 +27,18 @@ app.add_middleware(
 # Register central error mapping handlers
 register_exception_handlers(app)
 
-from app.repositories.dependency import state_repository
+from app.repositories.dependency import state_repository, get_state_repository
+from app.ai.dependency import get_ai_provider
+from app.ai.providers.base import BaseAIProvider
+from app.repositories.json_repository import JSONStateRepository
+from app.routers import states, search, compare, planner
+from fastapi import Depends
+
+# Register REST Routers
+app.include_router(states.router)
+app.include_router(search.router)
+app.include_router(compare.router)
+app.include_router(planner.router)
 
 @app.on_event("startup")
 async def startup_event():
@@ -39,3 +50,29 @@ async def startup_event():
 @app.get("/")
 async def root():
     return {"status": "ok", "message": "Season-Spot FastAPI Backend Running!"}
+
+@app.get("/health", tags=["System Health Status"])
+async def health_check():
+    """Retrieve overall system operational status."""
+    return {"status": "healthy", "service": "Season-Spot Backend"}
+
+@app.get("/health/knowledge", tags=["System Health Status"])
+async def knowledge_health(repo: JSONStateRepository = Depends(get_state_repository)):
+    """Retrieve internal deterministic knowledge database state status."""
+    total_states = len(repo.get_state_names())
+    status = "healthy" if total_states >= 3 else "degraded"
+    return {
+        "status": status,
+        "total_states": total_states,
+        "knowledge_version": repo.get_metadata().version
+    }
+
+@app.get("/health/ai", tags=["System Health Status"])
+async def ai_health(ai_provider: BaseAIProvider = Depends(get_ai_provider)):
+    """Check connection connectivity state to the configured Google Gemini API."""
+    ok = ai_provider.health_check()
+    status = "healthy" if ok else "unhealthy"
+    return {
+        "status": status,
+        "provider": "Google Gemini"
+    }

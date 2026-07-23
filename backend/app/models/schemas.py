@@ -125,3 +125,6 @@ class ItineraryRequest(BaseModel):
 
 class ItineraryPlan(BaseModel):
     plan: Dict[str, str] = Field(..., description="Day-by-day itinerary keyed by day1, day2, etc.")
+
+class CompareRequest(BaseModel):
+    states: List[str] = Field(..., min_length=2, max_length=5, description="List of state names to compare", example=["Kerala", "Telangana"])
