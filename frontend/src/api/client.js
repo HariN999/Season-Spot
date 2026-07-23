@@ -1,7 +1,7 @@
 const getApiBaseUrl = () => {
   const hostname = window.location.hostname;
   return (hostname === 'localhost' || hostname === '127.0.0.1')
-    ? 'http://localhost:5000'
+    ? 'http://localhost:8000'
     : ''; // Serves relative on production deployment / Vercel
 };
 
