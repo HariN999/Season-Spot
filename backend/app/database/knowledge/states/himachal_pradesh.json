@@ -1,0 +1,250 @@
+{
+  "name": "Himachal Pradesh",
+  "capital": "Himachal Pradesh Capital",
+  "description": "Discover the breathtaking seasonal beauty, rich cultural heritage, and legendary gastronomy of Himachal Pradesh.",
+  "heroImage": "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80"
+  ],
+  "coordinates": {
+    "latitude": 20,
+    "longitude": 77
+  },
+  "bestMonths": [
+    "October",
+    "November",
+    "December",
+    "January",
+    "February"
+  ],
+  "worstMonths": [
+    "May",
+    "June"
+  ],
+  "temperature": {
+    "Winter": "-5°C - 10°C",
+    "Spring": "8°C - 20°C",
+    "Summer": "12°C - 25°C",
+    "Monsoon": "15°C - 22°C"
+  },
+  "rainfall": {
+    "Winter": "Low",
+    "Spring": "Low",
+    "Summer": "Low",
+    "Monsoon": "Heavy"
+  },
+  "crowdLevel": "Moderate",
+  "travelScore": 8.5,
+  "budgetLevel": "Moderate",
+  "tripDuration": "4-5 Days",
+  "airports": [
+    "Local Airport (LKO)"
+  ],
+  "railwayStations": [
+    "Central Railway Station"
+  ],
+  "nearbyStates": [],
+  "languages": [
+    "Hindi",
+    "English"
+  ],
+  "cuisine": [
+    {
+      "name": "Dham",
+      "desc": "Traditional festive feast of lentils, rajma & curd rice served on leaf plates.",
+      "tag": "Thali"
+    },
+    {
+      "name": "Siddu",
+      "desc": "Steamed wheat bread stuffed with roasted poppy seeds & walnuts, served with ghee.",
+      "tag": "Comfort Food"
+    },
+    {
+      "name": "Chha Gosht",
+      "desc": "Marinated lamb cooked slowly in buttermilk & aromatic spices.",
+      "tag": "Non-Veg"
+    }
+  ],
+  "streetFood": [],
+  "desserts": [],
+  "festivals": [
+    {
+      "name": "Himachal Pradesh Festival",
+      "desc": "A vibrant regional celebration of culture and heritage.",
+      "month": "November"
+    }
+  ],
+  "hiddenGems": [],
+  "topDestinations": [
+    {
+      "name": "Manali & Solang Valley",
+      "highlight": "Skiing, snowboarding & snowmobiling over fresh powder snow.",
+      "bestTime": "Daytime"
+    },
+    {
+      "name": "Shimla Mall Road",
+      "highlight": "Colonial town covered in snow under glowing street lamps.",
+      "bestTime": "Evening"
+    },
+    {
+      "name": "Spiti Valley (Winter Expedition)",
+      "highlight": "Frozen lakes & snow leopard trail expeditions for hardcore adventurers.",
+      "bestTime": "Full Day"
+    }
+  ],
+  "packingList": [
+    "Comfortable shoes",
+    "Light cotton clothes",
+    "Camera",
+    "Sunscreen"
+  ],
+  "travelTips": [
+    "Heavy thermal layers, water-resistant snow boots & gloves required",
+    "Keep tire chains handy if driving through mountain passes",
+    "Great season for landscape photography",
+    "Pack light woolens for mornings and evenings"
+  ],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Snow",
+      "suitabilityScore": 9.7,
+      "tempRange": "-5°C - 10°C",
+      "weatherDesc": "Snowfall transforming Himalayan pine forests into magical winter wonderlands.",
+      "food": [
+        {
+          "name": "Dham",
+          "desc": "Traditional festive feast of lentils, rajma & curd rice served on leaf plates.",
+          "tag": "Thali"
+        },
+        {
+          "name": "Siddu",
+          "desc": "Steamed wheat bread stuffed with roasted poppy seeds & walnuts, served with ghee.",
+          "tag": "Comfort Food"
+        },
+        {
+          "name": "Chha Gosht",
+          "desc": "Marinated lamb cooked slowly in buttermilk & aromatic spices.",
+          "tag": "Non-Veg"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Manali & Solang Valley",
+          "highlight": "Skiing, snowboarding & snowmobiling over fresh powder snow.",
+          "bestTime": "Daytime"
+        },
+        {
+          "name": "Shimla Mall Road",
+          "highlight": "Colonial town covered in snow under glowing street lamps.",
+          "bestTime": "Evening"
+        },
+        {
+          "name": "Spiti Valley (Winter Expedition)",
+          "highlight": "Frozen lakes & snow leopard trail expeditions for hardcore adventurers.",
+          "bestTime": "Full Day"
+        }
+      ],
+      "travelTips": [
+        "Heavy thermal layers, water-resistant snow boots & gloves required",
+        "Keep tire chains handy if driving through mountain passes"
+      ]
+    },
+    "Spring": {
+      "vibe": "Hill Station",
+      "suitabilityScore": 9.4,
+      "tempRange": "8°C - 20°C",
+      "weatherDesc": "Apple blossoms filling the valleys with pink flowers under crisp sunny mountain skies.",
+      "food": [
+        {
+          "name": "Tudkiya Bhath",
+          "desc": "Spiced rice dish cooked with lentils, potatoes & yogurt.",
+          "tag": "Rice Dish"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Kinnaur Valley",
+          "highlight": "Breathtaking views of blooming apple orchards & snow peaks.",
+          "bestTime": "Full Day"
+        }
+      ],
+      "travelTips": [
+        "Great season for landscape photography",
+        "Pack light woolens for mornings and evenings"
+      ]
+    },
+    "Summer": {
+      "vibe": "Hill Station",
+      "suitabilityScore": 9.9,
+      "tempRange": "12°C - 25°C",
+      "weatherDesc": "Cool alpine breezes, blooming apple orchards & escape from plains heat.",
+      "food": [
+        {
+          "name": "Babru",
+          "desc": "Deep-fried flatbread stuffed with spiced black gram paste.",
+          "tag": "Snack"
+        },
+        {
+          "name": "Mittha",
+          "desc": "Sweet rice dish garnished with raisins, almonds & saffron.",
+          "tag": "Dessert"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Dharamshala & McLeod Ganj",
+          "highlight": "Tibetan monasteries, Dalai Lama temple & Triund trekking.",
+          "bestTime": "Full Day"
+        },
+        {
+          "name": "Kasol & Parvati Valley",
+          "highlight": "Scenic riverside cafes, pine forests & serene village trails.",
+          "bestTime": "Daytime"
+        },
+        {
+          "name": "Khajjiar",
+          "highlight": "Mini Switzerland of India with emerald green meadows surrounded by cedars.",
+          "bestTime": "Daytime"
+        }
+      ],
+      "travelTips": [
+        "Book toy train from Kalka to Shimla in advance",
+        "Ideal weather for camping & high altitude trekking"
+      ]
+    },
+    "Monsoon": {
+      "vibe": "Nature & Greenery",
+      "suitabilityScore": 6.2,
+      "tempRange": "15°C - 22°C",
+      "weatherDesc": "Misty clouds hovering over green valleys; landslide caution advised on highways.",
+      "food": [
+        {
+          "name": "Patande",
+          "desc": "Himachali sweet pancakes made from wheat flour & ghee.",
+          "tag": "Breakfast"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Spiti Valley (Rain Shadow Region)",
+          "highlight": "Spiti remains dry & clear while lower Himalayas receive rain.",
+          "bestTime": "Full Day"
+        }
+      ],
+      "travelTips": [
+        "Avoid steep roads due to risk of landslides during peak rain",
+        "Check weather advisories before traveling"
+      ]
+    }
+  },
+  "weatherWarnings": [],
+  "accessibility": {
+    "wheelchairAccess": true,
+    "comments": "Mostly accessible heritage points and city centers."
+  },
+  "photographySpots": []
+}

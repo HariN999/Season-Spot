@@ -1,0 +1,230 @@
+{
+  "name": "Tamil Nadu",
+  "capital": "Tamil Nadu Capital",
+  "description": "Discover the breathtaking seasonal beauty, rich cultural heritage, and legendary gastronomy of Tamil Nadu.",
+  "heroImage": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80"
+  ],
+  "coordinates": {
+    "latitude": 20,
+    "longitude": 77
+  },
+  "bestMonths": [
+    "October",
+    "November",
+    "December",
+    "January",
+    "February"
+  ],
+  "worstMonths": [
+    "May",
+    "June"
+  ],
+  "temperature": {
+    "Winter": "20°C - 29°C",
+    "Spring": "22°C - 33°C",
+    "Summer": "15°C - 25°C (Hills)",
+    "Monsoon": "24°C - 31°C"
+  },
+  "rainfall": {
+    "Winter": "Low",
+    "Spring": "Low",
+    "Summer": "Low",
+    "Monsoon": "Heavy"
+  },
+  "crowdLevel": "Moderate",
+  "travelScore": 8.5,
+  "budgetLevel": "Moderate",
+  "tripDuration": "4-5 Days",
+  "airports": [
+    "Local Airport (LKO)"
+  ],
+  "railwayStations": [
+    "Central Railway Station"
+  ],
+  "nearbyStates": [],
+  "languages": [
+    "Hindi",
+    "English"
+  ],
+  "cuisine": [
+    {
+      "name": "Chettinad Chicken Curry",
+      "desc": "Fiery aromatic chicken dish made with freshly ground stone masalas.",
+      "tag": "Iconic"
+    },
+    {
+      "name": "Pongal & Vadai",
+      "desc": "Rice & moong dal cooked with ghee, pepper & cashews paired with crunchy lentil donut.",
+      "tag": "Festive"
+    },
+    {
+      "name": "Filter Kaapi",
+      "desc": "Strong chicory-infused dark coffee frothed with thick boiled milk.",
+      "tag": "Beverage"
+    }
+  ],
+  "streetFood": [],
+  "desserts": [],
+  "festivals": [
+    {
+      "name": "Tamil Nadu Festival",
+      "desc": "A vibrant regional celebration of culture and heritage.",
+      "month": "November"
+    }
+  ],
+  "hiddenGems": [],
+  "topDestinations": [
+    {
+      "name": "Madurai Meenakshi Amman Temple",
+      "highlight": "Towering colorful Gopurams & illuminated night processions.",
+      "bestTime": "Evening"
+    },
+    {
+      "name": "Mahabalipuram Shore Temple",
+      "highlight": "UNESCO rock-cut relief sculptures along sunny ocean waves.",
+      "bestTime": "Morning"
+    },
+    {
+      "name": "Thanjavur Brihadeeswarar Temple",
+      "highlight": "Grand Chola dynasty granite temple marvel.",
+      "bestTime": "Late Afternoon"
+    }
+  ],
+  "packingList": [
+    "Comfortable shoes",
+    "Light cotton clothes",
+    "Camera",
+    "Sunscreen"
+  ],
+  "travelTips": [
+    "Visit Chennai during Dec-Jan for classical music & dance festival",
+    "Dress respectfully when visiting ancient temples",
+    "Visit temple sites before midday heat",
+    "Explore local handloom silk saree weaver villages"
+  ],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Heritage",
+      "suitabilityScore": 9.6,
+      "tempRange": "20°C - 29°C",
+      "weatherDesc": "Pleasant breezy coastlines, temple car festivals & Margazhi music season.",
+      "food": [
+        {
+          "name": "Chettinad Chicken Curry",
+          "desc": "Fiery aromatic chicken dish made with freshly ground stone masalas.",
+          "tag": "Iconic"
+        },
+        {
+          "name": "Pongal & Vadai",
+          "desc": "Rice & moong dal cooked with ghee, pepper & cashews paired with crunchy lentil donut.",
+          "tag": "Festive"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Madurai Meenakshi Amman Temple",
+          "highlight": "Towering colorful Gopurams & illuminated night processions.",
+          "bestTime": "Evening"
+        },
+        {
+          "name": "Mahabalipuram Shore Temple",
+          "highlight": "UNESCO rock-cut relief sculptures along sunny ocean waves.",
+          "bestTime": "Morning"
+        }
+      ],
+      "travelTips": [
+        "Visit Chennai during Dec-Jan for classical music & dance festival",
+        "Dress respectfully when visiting ancient temples"
+      ]
+    },
+    "Spring": {
+      "vibe": "Heritage",
+      "suitabilityScore": 8.9,
+      "tempRange": "22°C - 33°C",
+      "weatherDesc": "Bright sunny spring weather ideal for exploring temple architecture.",
+      "food": [
+        {
+          "name": "Filter Kaapi",
+          "desc": "Strong chicory-infused dark coffee frothed with thick boiled milk.",
+          "tag": "Beverage"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Thanjavur Brihadeeswarar Temple",
+          "highlight": "Grand Chola dynasty granite temple marvel.",
+          "bestTime": "Late Afternoon"
+        }
+      ],
+      "travelTips": [
+        "Visit temple sites before midday heat",
+        "Explore local handloom silk saree weaver villages"
+      ]
+    },
+    "Summer": {
+      "vibe": "Hill Station",
+      "suitabilityScore": 8.5,
+      "tempRange": "15°C - 25°C (Hills)",
+      "weatherDesc": "Escape hot plains to cool Nilgiri hill stations Ooty and Kodaikanal.",
+      "food": [
+        {
+          "name": "Jigarthanda",
+          "desc": "Famous Madurai cooling dessert drink made with almond gum, milk & ice cream.",
+          "tag": "Cooler"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Ooty Nilgiri Toy Train",
+          "highlight": "Riding heritage steam train through mountain tunnels & tea gardens.",
+          "bestTime": "Full Day"
+        },
+        {
+          "name": "Kodaikanal Lake & Coaker's Walk",
+          "highlight": "Misty pedal boating & pine forest walks.",
+          "bestTime": "Daytime"
+        }
+      ],
+      "travelTips": [
+        "Book Nilgiri mountain railway tickets well in advance",
+        "Pack light sweaters for hill stations"
+      ]
+    },
+    "Monsoon": {
+      "vibe": "Nature",
+      "suitabilityScore": 7.8,
+      "tempRange": "24°C - 31°C",
+      "weatherDesc": "Northeast monsoon showers bringing life to southern rivers and waterfalls.",
+      "food": [
+        {
+          "name": "Kothu Parotta",
+          "desc": "Shredded layered flatbread stir-fried with eggs, meat, and spicy salna gravy.",
+          "tag": "Street Food"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Courtallam Waterfalls",
+          "highlight": "Medicinal waterfall baths in Tenkasi district.",
+          "bestTime": "Daytime"
+        }
+      ],
+      "travelTips": [
+        "Carry sturdy umbrellas during Oct-Nov coastal rain",
+        "Try piping hot filter coffee at highway stalls"
+      ]
+    }
+  },
+  "weatherWarnings": [],
+  "accessibility": {
+    "wheelchairAccess": true,
+    "comments": "Mostly accessible heritage points and city centers."
+  },
+  "photographySpots": []
+}

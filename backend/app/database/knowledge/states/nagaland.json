@@ -1,0 +1,118 @@
+{
+  "name": "Nagaland",
+  "capital": "Nagaland Capital",
+  "description": "Discover the breathtaking seasonal beauty, rich cultural heritage, and legendary gastronomy of Nagaland.",
+  "heroImage": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80"
+  ],
+  "coordinates": {
+    "latitude": 20,
+    "longitude": 77
+  },
+  "bestMonths": [
+    "October",
+    "November",
+    "December",
+    "January",
+    "February"
+  ],
+  "worstMonths": [
+    "May",
+    "June"
+  ],
+  "temperature": {
+    "Winter": "20°C - 30°C",
+    "Spring": "20°C - 30°C",
+    "Summer": "20°C - 30°C",
+    "Monsoon": "20°C - 30°C"
+  },
+  "rainfall": {
+    "Winter": "Low",
+    "Spring": "Low",
+    "Summer": "Low",
+    "Monsoon": "Heavy"
+  },
+  "crowdLevel": "Moderate",
+  "travelScore": 8.5,
+  "budgetLevel": "Moderate",
+  "tripDuration": "4-5 Days",
+  "airports": [
+    "Local Airport (LKO)"
+  ],
+  "railwayStations": [
+    "Central Railway Station"
+  ],
+  "nearbyStates": [],
+  "languages": [
+    "Hindi",
+    "English"
+  ],
+  "cuisine": [],
+  "streetFood": [],
+  "desserts": [],
+  "festivals": [
+    {
+      "name": "Nagaland Festival",
+      "desc": "A vibrant regional celebration of culture and heritage.",
+      "month": "November"
+    }
+  ],
+  "hiddenGems": [],
+  "topDestinations": [],
+  "packingList": [
+    "Comfortable shoes",
+    "Light cotton clothes",
+    "Camera",
+    "Sunscreen"
+  ],
+  "travelTips": [],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Nature",
+      "suitabilityScore": 8,
+      "tempRange": "20°C - 30°C",
+      "weatherDesc": "Pleasant weather conditions in Nagaland during Winter.",
+      "food": [],
+      "locations": [],
+      "travelTips": []
+    },
+    "Spring": {
+      "vibe": "Nature",
+      "suitabilityScore": 8,
+      "tempRange": "20°C - 30°C",
+      "weatherDesc": "Pleasant weather conditions in Nagaland during Spring.",
+      "food": [],
+      "locations": [],
+      "travelTips": []
+    },
+    "Summer": {
+      "vibe": "Nature",
+      "suitabilityScore": 8,
+      "tempRange": "20°C - 30°C",
+      "weatherDesc": "Pleasant weather conditions in Nagaland during Summer.",
+      "food": [],
+      "locations": [],
+      "travelTips": []
+    },
+    "Monsoon": {
+      "vibe": "Nature",
+      "suitabilityScore": 8,
+      "tempRange": "20°C - 30°C",
+      "weatherDesc": "Pleasant weather conditions in Nagaland during Monsoon.",
+      "food": [],
+      "locations": [],
+      "travelTips": []
+    }
+  },
+  "weatherWarnings": [],
+  "accessibility": {
+    "wheelchairAccess": true,
+    "comments": "Mostly accessible heritage points and city centers."
+  },
+  "photographySpots": []
+}

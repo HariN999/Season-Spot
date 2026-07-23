@@ -1,0 +1,240 @@
+{
+  "name": "West Bengal",
+  "capital": "West Bengal Capital",
+  "description": "Discover the breathtaking seasonal beauty, rich cultural heritage, and legendary gastronomy of West Bengal.",
+  "heroImage": "https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1558431382-27e303142255?auto=format&fit=crop&w=800&q=80"
+  ],
+  "coordinates": {
+    "latitude": 20,
+    "longitude": 77
+  },
+  "bestMonths": [
+    "October",
+    "November",
+    "December",
+    "January",
+    "February"
+  ],
+  "worstMonths": [
+    "May",
+    "June"
+  ],
+  "temperature": {
+    "Winter": "12°C - 24°C",
+    "Spring": "20°C - 30°C",
+    "Summer": "14°C - 23°C (Darjeeling)",
+    "Monsoon": "25°C - 31°C"
+  },
+  "rainfall": {
+    "Winter": "Low",
+    "Spring": "Low",
+    "Summer": "Low",
+    "Monsoon": "Heavy"
+  },
+  "crowdLevel": "Moderate",
+  "travelScore": 8.5,
+  "budgetLevel": "Moderate",
+  "tripDuration": "4-5 Days",
+  "airports": [
+    "Local Airport (LKO)"
+  ],
+  "railwayStations": [
+    "Central Railway Station"
+  ],
+  "nearbyStates": [],
+  "languages": [
+    "Hindi",
+    "English"
+  ],
+  "cuisine": [
+    {
+      "name": "Kolkata Mutton Biryani",
+      "desc": "Fragrant saffron rice served with tender meat, soft boiled egg & spiced potato.",
+      "tag": "Iconic"
+    },
+    {
+      "name": "Nolen Gurer Sandesh",
+      "desc": "Delicate cottage cheese sweet made with fresh date palm jaggery available only in winter.",
+      "tag": "Seasonal Sweet"
+    },
+    {
+      "name": "Kosha Mangsho with Luchi",
+      "desc": "Rich slow-cooked dark mutton curry served with puffed fried bread.",
+      "tag": "Festive"
+    }
+  ],
+  "streetFood": [],
+  "desserts": [],
+  "festivals": [
+    {
+      "name": "West Bengal Festival",
+      "desc": "A vibrant regional celebration of culture and heritage.",
+      "month": "November"
+    }
+  ],
+  "hiddenGems": [],
+  "topDestinations": [
+    {
+      "name": "Darjeeling Mall & Tiger Hill",
+      "highlight": "Sunrise view over Kanchenjunga snow peaks & tea garden walks.",
+      "bestTime": "Early Morning"
+    },
+    {
+      "name": "Kolkata Victoria Memorial & Park Street",
+      "highlight": "Colonial architecture, Christmas lighting & street food strolls.",
+      "bestTime": "Evening"
+    },
+    {
+      "name": "Sundarbans National Park",
+      "highlight": "Mangrove boat cruise searching for Royal Bengal Tigers & saltwater crocodiles.",
+      "bestTime": "Full Day"
+    }
+  ],
+  "packingList": [
+    "Comfortable shoes",
+    "Light cotton clothes",
+    "Camera",
+    "Sunscreen"
+  ],
+  "travelTips": [
+    "Do not miss tasting fresh Nolen Gur sweets",
+    "Book Darjeeling Toy Train rides early",
+    "Book accommodation at Shantiniketan months prior for Basanta Utsav",
+    "Explore local terracotta craft villages in Bishnupur"
+  ],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Culture & Culinary",
+      "suitabilityScore": 9.8,
+      "tempRange": "12°C - 24°C",
+      "weatherDesc": "Crisp sunny days, colonial heritage walks, street food fairs & Darjeeling tea peak season.",
+      "food": [
+        {
+          "name": "Kolkata Mutton Biryani",
+          "desc": "Fragrant saffron rice served with tender meat, soft boiled egg & spiced potato.",
+          "tag": "Iconic"
+        },
+        {
+          "name": "Nolen Gurer Sandesh",
+          "desc": "Delicate cottage cheese sweet made with fresh date palm jaggery available only in winter.",
+          "tag": "Seasonal Sweet"
+        },
+        {
+          "name": "Kosha Mangsho with Luchi",
+          "desc": "Rich slow-cooked dark mutton curry served with puffed fried bread.",
+          "tag": "Festive"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Darjeeling Mall & Tiger Hill",
+          "highlight": "Sunrise view over Kanchenjunga snow peaks & tea garden walks.",
+          "bestTime": "Early Morning"
+        },
+        {
+          "name": "Kolkata Victoria Memorial & Park Street",
+          "highlight": "Colonial architecture, Christmas lighting & street food strolls.",
+          "bestTime": "Evening"
+        },
+        {
+          "name": "Sundarbans National Park",
+          "highlight": "Mangrove boat cruise searching for Royal Bengal Tigers & saltwater crocodiles.",
+          "bestTime": "Full Day"
+        }
+      ],
+      "travelTips": [
+        "Do not miss tasting fresh Nolen Gur sweets",
+        "Book Darjeeling Toy Train rides early"
+      ]
+    },
+    "Spring": {
+      "vibe": "Culture",
+      "suitabilityScore": 9.3,
+      "tempRange": "20°C - 30°C",
+      "weatherDesc": "Vibrant season with Basanta Utsav (Holi festival of colors) at Shantiniketan.",
+      "food": [
+        {
+          "name": "Roshogolla",
+          "desc": "Spongy cottage cheese balls soaked in clear sugar syrup.",
+          "tag": "World Famous"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Shantiniketan (Rabindranath Tagore University)",
+          "highlight": "Spring Rabindra Sangeet music, folk Baul singers & open-air yellow gulal festivities.",
+          "bestTime": "Full Day"
+        }
+      ],
+      "travelTips": [
+        "Book accommodation at Shantiniketan months prior for Basanta Utsav",
+        "Explore local terracotta craft villages in Bishnupur"
+      ]
+    },
+    "Summer": {
+      "vibe": "Hill Station",
+      "suitabilityScore": 7.9,
+      "tempRange": "14°C - 23°C (Darjeeling)",
+      "weatherDesc": "Escape city humidity to cool high altitude retreats like Kalimpong & Darjeeling.",
+      "food": [
+        {
+          "name": "Mishti Doi",
+          "desc": "Traditional sweetened fermented yogurt served in earthen clay pots.",
+          "tag": "Sweet"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Kalimpong & Mirik Lake",
+          "highlight": "Orchid nurseries, serene lake boating & peaceful monasteries.",
+          "bestTime": "Daytime"
+        }
+      ],
+      "travelTips": [
+        "Head directly up into North Bengal hill towns",
+        "Try authentic Tibetan Momos & Thukpa in hill cafes"
+      ]
+    },
+    "Monsoon": {
+      "vibe": "Nature",
+      "suitabilityScore": 8.2,
+      "tempRange": "25°C - 31°C",
+      "weatherDesc": "Romantic heavy rains over Gangetic plains & misty tea gardens in Dooars.",
+      "food": [
+        {
+          "name": "Ilish Macher Jhol (Hilsa Curry)",
+          "desc": "Monsoon favorite fish cooked in mustard paste & green chilies.",
+          "tag": "Seafood Legend"
+        },
+        {
+          "name": "Khichuri & Beguni",
+          "desc": "Lentil rice comfort dish served with crispy fried eggplant slices.",
+          "tag": "Rainy Day Classic"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Dooars Rainforests",
+          "highlight": "Lush green tea gardens & elephant sightings in Gorumara.",
+          "bestTime": "Daytime"
+        }
+      ],
+      "travelTips": [
+        "Attend local Hilsa food festivals in Kolkata",
+        "Pack waterproof boots for rainforest visits"
+      ]
+    }
+  },
+  "weatherWarnings": [],
+  "accessibility": {
+    "wheelchairAccess": true,
+    "comments": "Mostly accessible heritage points and city centers."
+  },
+  "photographySpots": []
+}

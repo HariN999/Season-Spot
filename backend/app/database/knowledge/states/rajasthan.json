@@ -1,0 +1,235 @@
+{
+  "name": "Rajasthan",
+  "capital": "Rajasthan Capital",
+  "description": "Discover the breathtaking seasonal beauty, rich cultural heritage, and legendary gastronomy of Rajasthan.",
+  "heroImage": "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=800&q=80"
+  ],
+  "coordinates": {
+    "latitude": 20,
+    "longitude": 77
+  },
+  "bestMonths": [
+    "October",
+    "November",
+    "December",
+    "January",
+    "February"
+  ],
+  "worstMonths": [
+    "May",
+    "June"
+  ],
+  "temperature": {
+    "Winter": "8°C - 24°C",
+    "Spring": "18°C - 30°C",
+    "Summer": "30°C - 45°C",
+    "Monsoon": "24°C - 33°C"
+  },
+  "rainfall": {
+    "Winter": "Low",
+    "Spring": "Low",
+    "Summer": "Low",
+    "Monsoon": "Heavy"
+  },
+  "crowdLevel": "Moderate",
+  "travelScore": 8.5,
+  "budgetLevel": "Moderate",
+  "tripDuration": "4-5 Days",
+  "airports": [
+    "Local Airport (LKO)"
+  ],
+  "railwayStations": [
+    "Central Railway Station"
+  ],
+  "nearbyStates": [],
+  "languages": [
+    "Hindi",
+    "English"
+  ],
+  "cuisine": [
+    {
+      "name": "Dal Baati Churma",
+      "desc": "Hard wheat balls baked over coal, dipped in ghee, served with lentils & sweet churma.",
+      "tag": "Royal Thali"
+    },
+    {
+      "name": "Laal Maas",
+      "desc": "Royal spicy mutton curry cooked with Mathania red chilies & yogurt.",
+      "tag": "Iconic Non-Veg"
+    },
+    {
+      "name": "Ghevar",
+      "desc": "Honeycomb dessert soaked in sugar syrup and topped with rabri & pistachio.",
+      "tag": "Royal Sweet"
+    }
+  ],
+  "streetFood": [],
+  "desserts": [],
+  "festivals": [
+    {
+      "name": "Rajasthan Festival",
+      "desc": "A vibrant regional celebration of culture and heritage.",
+      "month": "November"
+    }
+  ],
+  "hiddenGems": [],
+  "topDestinations": [
+    {
+      "name": "Jaisalmer Thar Desert",
+      "highlight": "Camel safari, luxury desert glamping & folk music under starry skies.",
+      "bestTime": "Night"
+    },
+    {
+      "name": "Jaipur Amber Fort & Hawa Mahal",
+      "highlight": "Exploring grand pink city palaces under mild winter sun.",
+      "bestTime": "Daytime"
+    },
+    {
+      "name": "Udaipur Lake Palace & Pichola Lake",
+      "highlight": "Romantic boat ride past white marble palaces at sunset.",
+      "bestTime": "Sunset"
+    }
+  ],
+  "packingList": [
+    "Comfortable shoes",
+    "Light cotton clothes",
+    "Camera",
+    "Sunscreen"
+  ],
+  "travelTips": [
+    "Pack warm winter coats for desert cold nights",
+    "Book Jaisalmer Desert Festival tickets in advance",
+    "Experience royal Holi celebrations in Jaipur/Udaipur",
+    "Great season for fort shopping"
+  ],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Heritage",
+      "suitabilityScore": 9.9,
+      "tempRange": "8°C - 24°C",
+      "weatherDesc": "Sunny clear desert days with cool winter nights; royal festivals & desert safaris.",
+      "food": [
+        {
+          "name": "Dal Baati Churma",
+          "desc": "Hard wheat balls baked over coal, dipped in ghee, served with lentils & sweet churma.",
+          "tag": "Royal Thali"
+        },
+        {
+          "name": "Laal Maas",
+          "desc": "Royal spicy mutton curry cooked with Mathania red chilies & yogurt.",
+          "tag": "Iconic Non-Veg"
+        },
+        {
+          "name": "Ghevar",
+          "desc": "Honeycomb dessert soaked in sugar syrup and topped with rabri & pistachio.",
+          "tag": "Royal Sweet"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Jaisalmer Thar Desert",
+          "highlight": "Camel safari, luxury desert glamping & folk music under starry skies.",
+          "bestTime": "Night"
+        },
+        {
+          "name": "Jaipur Amber Fort & Hawa Mahal",
+          "highlight": "Exploring grand pink city palaces under mild winter sun.",
+          "bestTime": "Daytime"
+        },
+        {
+          "name": "Udaipur Lake Palace & Pichola Lake",
+          "highlight": "Romantic boat ride past white marble palaces at sunset.",
+          "bestTime": "Sunset"
+        }
+      ],
+      "travelTips": [
+        "Pack warm winter coats for desert cold nights",
+        "Book Jaisalmer Desert Festival tickets in advance"
+      ]
+    },
+    "Spring": {
+      "vibe": "Heritage",
+      "suitabilityScore": 9.2,
+      "tempRange": "18°C - 30°C",
+      "weatherDesc": "Pleasant warm days filled with Holi color celebrations and Gangaur procession.",
+      "food": [
+        {
+          "name": "Gatte Ki Sabzi",
+          "desc": "Gram flour dumplings cooked in rich tangy yogurt gravy.",
+          "tag": "Traditional"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Pushkar Lake & Brahma Temple",
+          "highlight": "Serene sacred lake ghats and spring cultural fairs.",
+          "bestTime": "Morning"
+        }
+      ],
+      "travelTips": [
+        "Experience royal Holi celebrations in Jaipur/Udaipur",
+        "Great season for fort shopping"
+      ]
+    },
+    "Summer": {
+      "vibe": "Heritage",
+      "suitabilityScore": 5,
+      "tempRange": "30°C - 45°C",
+      "weatherDesc": "Extreme desert heat; travel recommended only in high-altitude Mount Abu.",
+      "food": [
+        {
+          "name": "Ker Sangri",
+          "desc": "Wild desert beans and berries cooked with tangy mustard oil spices.",
+          "tag": "Traditional"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Mount Abu",
+          "highlight": "Rajasthan's only hill station with Dilwara marble temples & Nakki lake.",
+          "bestTime": "Daytime"
+        }
+      ],
+      "travelTips": [
+        "Avoid desert interior cities like Jodhpur/Jaisalmer in May/June",
+        "Drink plenty of buttermilk (Chaach)"
+      ]
+    },
+    "Monsoon": {
+      "vibe": "Heritage",
+      "suitabilityScore": 8.4,
+      "tempRange": "24°C - 33°C",
+      "weatherDesc": "Peacocks dancing, dry lakes filling up & green transforming dry desert landscapes.",
+      "food": [
+        {
+          "name": "Pyaz Ki Kachori",
+          "desc": "Flaky deep-fried pastry filled with spicy onion garlic mix.",
+          "tag": "Snack"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Udaipur (City of Lakes)",
+          "highlight": "Lakes overflowing, lush monsoon palace views atop Bansdara hill.",
+          "bestTime": "Full Day"
+        }
+      ],
+      "travelTips": [
+        "Experience Teej festival swing celebrations in Jaipur",
+        "Beautiful season for photography in Udaipur"
+      ]
+    }
+  },
+  "weatherWarnings": [],
+  "accessibility": {
+    "wheelchairAccess": true,
+    "comments": "Mostly accessible heritage points and city centers."
+  },
+  "photographySpots": []
+}

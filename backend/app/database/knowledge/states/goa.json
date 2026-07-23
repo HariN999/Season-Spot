@@ -1,0 +1,251 @@
+{
+  "name": "Goa",
+  "capital": "Goa Capital",
+  "description": "Discover the breathtaking seasonal beauty, rich cultural heritage, and legendary gastronomy of Goa.",
+  "heroImage": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80",
+  "gallery": [
+    "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80"
+  ],
+  "coordinates": {
+    "latitude": 20,
+    "longitude": 77
+  },
+  "bestMonths": [
+    "October",
+    "November",
+    "December",
+    "January",
+    "February"
+  ],
+  "worstMonths": [
+    "May",
+    "June"
+  ],
+  "temperature": {
+    "Winter": "20°C - 31°C",
+    "Spring": "22°C - 32°C",
+    "Summer": "26°C - 35°C",
+    "Monsoon": "24°C - 29°C"
+  },
+  "rainfall": {
+    "Winter": "Low",
+    "Spring": "Low",
+    "Summer": "Low",
+    "Monsoon": "Heavy"
+  },
+  "crowdLevel": "Moderate",
+  "travelScore": 8.5,
+  "budgetLevel": "Moderate",
+  "tripDuration": "4-5 Days",
+  "airports": [
+    "Local Airport (LKO)"
+  ],
+  "railwayStations": [
+    "Central Railway Station"
+  ],
+  "nearbyStates": [],
+  "languages": [
+    "Hindi",
+    "English"
+  ],
+  "cuisine": [
+    {
+      "name": "Prawn Balchão",
+      "desc": "Tangy pickled prawn delicacy cooked in chili paste.",
+      "tag": "Seafood"
+    },
+    {
+      "name": "Bebinca",
+      "desc": "Traditional 7-layer baked Goan dessert made with coconut milk & nutmeg.",
+      "tag": "Dessert"
+    },
+    {
+      "name": "Goan Crab Xacuti",
+      "desc": "Crab curry cooked with heavily roasted spices and grated coconut.",
+      "tag": "Seafood"
+    }
+  ],
+  "streetFood": [],
+  "desserts": [],
+  "festivals": [
+    {
+      "name": "Goa Festival",
+      "desc": "A vibrant regional celebration of culture and heritage.",
+      "month": "November"
+    }
+  ],
+  "hiddenGems": [],
+  "topDestinations": [
+    {
+      "name": "Palolem & Arambol Beach",
+      "highlight": "Pristine white sand beaches, water sports & sunset shacks.",
+      "bestTime": "Sunset"
+    },
+    {
+      "name": "Fontainhas (Latin Quarter)",
+      "highlight": "Heritage walk past colorful Portuguese villas in Panjim.",
+      "bestTime": "Morning"
+    },
+    {
+      "name": "Panaji Carnival Streets",
+      "highlight": "Colorful float parades, music & dance during Shigmo उत्सव.",
+      "bestTime": "Evening"
+    }
+  ],
+  "packingList": [
+    "Comfortable shoes",
+    "Light cotton clothes",
+    "Camera",
+    "Sunscreen"
+  ],
+  "travelTips": [
+    "Book beach shacks & stays 2 months in advance for Dec/Jan",
+    "Try sunset kayaking at Palolem beach",
+    "Check dates for Shigmo Festival street parades",
+    "Great time for calm sea swimming"
+  ],
+  "emergencyNumbers": {
+    "Police": "100",
+    "Ambulance": "102"
+  },
+  "seasons": {
+    "Winter": {
+      "vibe": "Beach",
+      "suitabilityScore": 9.8,
+      "tempRange": "20°C - 31°C",
+      "weatherDesc": "Sunny blue skies, gentle ocean breezes, sunbeds & vibrant nightlife.",
+      "food": [
+        {
+          "name": "Prawn Balchão",
+          "desc": "Tangy pickled prawn delicacy cooked in chili paste.",
+          "tag": "Seafood"
+        },
+        {
+          "name": "Bebinca",
+          "desc": "Traditional 7-layer baked Goan dessert made with coconut milk & nutmeg.",
+          "tag": "Dessert"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Palolem & Arambol Beach",
+          "highlight": "Pristine white sand beaches, water sports & sunset shacks.",
+          "bestTime": "Sunset"
+        },
+        {
+          "name": "Fontainhas (Latin Quarter)",
+          "highlight": "Heritage walk past colorful Portuguese villas in Panjim.",
+          "bestTime": "Morning"
+        }
+      ],
+      "travelTips": [
+        "Book beach shacks & stays 2 months in advance for Dec/Jan",
+        "Try sunset kayaking at Palolem beach"
+      ]
+    },
+    "Spring": {
+      "vibe": "Beach",
+      "suitabilityScore": 9.2,
+      "tempRange": "22°C - 32°C",
+      "weatherDesc": "Pleasant spring climate with the vibrant Shigmo carnival parade across cities.",
+      "food": [
+        {
+          "name": "Goan Crab Xacuti",
+          "desc": "Crab curry cooked with heavily roasted spices and grated coconut.",
+          "tag": "Seafood"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Panaji Carnival Streets",
+          "highlight": "Colorful float parades, music & dance during Shigmo उत्सव.",
+          "bestTime": "Evening"
+        },
+        {
+          "name": "Agonda Beach",
+          "highlight": "Quiet turtle-nesting sanctuary beach with turquoise waters.",
+          "bestTime": "Full Day"
+        }
+      ],
+      "travelTips": [
+        "Check dates for Shigmo Festival street parades",
+        "Great time for calm sea swimming"
+      ]
+    },
+    "Summer": {
+      "vibe": "Beach",
+      "suitabilityScore": 7.2,
+      "tempRange": "26°C - 35°C",
+      "weatherDesc": "Warm coastal days; great for budget travel, water sports & quiet beaches.",
+      "food": [
+        {
+          "name": "Cashew Feni Cocktail",
+          "desc": "Refreshing local spirit distilled from ripe cashew apples.",
+          "tag": "Beverage"
+        },
+        {
+          "name": "Sol Kadhi",
+          "desc": "Cooling digestive drink made from kokum extract and fresh coconut milk.",
+          "tag": "Cooler"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Grand Island Scuba",
+          "highlight": "Clear spring waters ideal for diving & dolphin spotting.",
+          "bestTime": "Morning"
+        },
+        {
+          "name": "Anjuna Flea Market",
+          "highlight": "Bargain shopping for bohemian clothes & handicrafts.",
+          "bestTime": "Late Afternoon"
+        }
+      ],
+      "travelTips": [
+        "High SPF sunscreen is mandatory",
+        "Avail massive off-season resort discounts"
+      ]
+    },
+    "Monsoon": {
+      "vibe": "Nature & Greenery",
+      "suitabilityScore": 9,
+      "tempRange": "24°C - 29°C",
+      "weatherDesc": "Lush green countryside, roaring waterfalls & tranquil uncrowded beaches.",
+      "food": [
+        {
+          "name": "Fish Curry Rice",
+          "desc": "Fresh catch cooked in coconut curry with spicy kokum.",
+          "tag": "Seafood"
+        },
+        {
+          "name": "Pork Vindaloo",
+          "desc": "Fiery sour & spicy gravy infused with palm vinegar and garlic.",
+          "tag": "Iconic"
+        }
+      ],
+      "locations": [
+        {
+          "name": "Dudhsagar Waterfalls",
+          "highlight": "Four-tiered majestic white waterfall at peak power.",
+          "bestTime": "Full Day"
+        },
+        {
+          "name": "Mhadei Wildlife Sanctuary",
+          "highlight": "Rainforest jungle treks & birdwatching.",
+          "bestTime": "Morning"
+        }
+      ],
+      "travelTips": [
+        "Swimming in sea is restricted during heavy tides",
+        "Rent a scooter and ride through spice plantations",
+        "Carry high-quality waterproof covers for cameras"
+      ]
+    }
+  },
+  "weatherWarnings": [],
+  "accessibility": {
+    "wheelchairAccess": true,
+    "comments": "Mostly accessible heritage points and city centers."
+  },
+  "photographySpots": []
+}

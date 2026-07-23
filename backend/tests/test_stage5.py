@@ -62,8 +62,8 @@ def test_api_search_endpoint():
     response = client.get("/api/search?q=biryani")
     assert response.status_code == 200
     results = response.json()
-    assert len(results) == 1
-    assert results[0]["name"] == "Telangana"
+    assert len(results) >= 1
+    assert any(s["name"] == "Telangana" for s in results)
 
 def test_api_search_validation_error():
     # Search term shorter than 2 chars should fail validation

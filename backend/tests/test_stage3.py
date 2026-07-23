@@ -39,35 +39,35 @@ def test_search_states(travel_service):
     
     # Search by destination
     charminar_search = travel_service.search_states("Charminar")
-    assert len(charminar_search) == 1
-    assert charminar_search[0].name == "Telangana"
+    assert len(charminar_search) >= 1
+    assert any(s.name == "Telangana" for s in charminar_search)
 
     # Search by cuisine item
     biryani_search = travel_service.search_states("Biryani")
-    assert len(biryani_search) == 1
-    assert biryani_search[0].name == "Telangana"
+    assert len(biryani_search) >= 1
+    assert any(s.name == "Telangana" for s in biryani_search)
 
     # Search by festival
     onam_search = travel_service.search_states("Onam")
-    assert len(onam_search) == 1
-    assert onam_search[0].name == "Kerala"
+    assert len(onam_search) >= 1
+    assert any(s.name == "Kerala" for s in onam_search)
 
 def test_filtering_mechanisms(travel_service):
     all_states = travel_service.get_all_states()
     
     # Filter by budget
     affordable = travel_service.filter_by_budget(all_states, "Affordable")
-    assert len(affordable) == 1
-    assert affordable[0].name == "Andhra Pradesh"
+    assert len(affordable) >= 1
+    assert any(s.name == "Andhra Pradesh" for s in affordable)
     
     # Filter by highly recommended season
     monsoon_rec = travel_service.filter_by_season(all_states, "Monsoon", min_score=8.5)
-    assert len(monsoon_rec) == 1
-    assert monsoon_rec[0].name == "Kerala"  # Kerala suitability is 9.0 in Monsoon
+    assert len(monsoon_rec) >= 1
+    assert any(s.name == "Kerala" for s in monsoon_rec)  # Kerala suitability is 9.0 in Monsoon
 
     # Filter by travel style vibe
     heritage_vibe = travel_service.filter_by_travel_style(all_states, "Heritage")
-    assert len(heritage_vibe) == 2  # Andhra Pradesh and Telangana both have Heritage vibes in seasonal profiles
+    assert len(heritage_vibe) >= 2  # Andhra Pradesh and Telangana both have Heritage vibes in seasonal profiles
 
 def test_compare_states_success(travel_service):
     report = travel_service.compare_states(["Kerala", "Telangana"])

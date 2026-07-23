@@ -13,6 +13,7 @@ import LunchDiningIcon from '@mui/icons-material/LunchDining';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import { useSeason } from '../context/SeasonContext';
 import { usePlanner } from '../hooks/usePlanner';
+import { useStates } from '../hooks/useStates';
 import SectionHeading from '../components/shared/SectionHeading';
 import SeasonChip from '../components/shared/SeasonChip';
 
@@ -34,11 +35,20 @@ const steps = ['Destination', 'Preferences', 'Generate'];
 export default function PlannerPage() {
   const { season, setSeason, seasons } = useSeason();
   const [activeStep, setActiveStep] = useState(0);
-  const [selectedState, setSelectedState] = useState('Goa');
+  const [selectedState, setSelectedState] = useState('');
   const [tripType, setTripType] = useState('Foodie & Cultural');
   const [budget, setBudget] = useState('Moderate');
   const [duration, setDuration] = useState('3 Days');
   const { plan: itinerary, loading, error, generate, reset } = usePlanner();
+  const { states: availableStates } = useStates();
+
+  const statesList = availableStates && availableStates.length > 0 ? availableStates : ALL_STATES;
+
+  React.useEffect(() => {
+    if (availableStates && availableStates.length > 0) {
+      setSelectedState(availableStates[0]);
+    }
+  }, [availableStates]);
 
   const handleGenerate = async () => {
     try {
@@ -101,7 +111,7 @@ export default function PlannerPage() {
                 <FormControl fullWidth sx={{ mb: 3 }}>
                   <InputLabel>State</InputLabel>
                   <Select value={selectedState} label="State" onChange={e => setSelectedState(e.target.value)}>
-                    {ALL_STATES.map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
+                    {statesList.map(s => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                   </Select>
                 </FormControl>
 
