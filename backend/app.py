@@ -11,7 +11,8 @@ from datetime import datetime, timezone
 import time
 
 # --- Load environment variables ---
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 # --- Logging ---
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
