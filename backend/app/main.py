@@ -51,10 +51,23 @@ async def startup_event():
 async def root():
     return {"status": "ok", "message": "Season-Spot FastAPI Backend Running!"}
 
+from app.ai.dependency import get_itinerary_cache
+from app.services.cache import LRUCacheWithTTL
+
 @app.get("/health", tags=["System Health Status"])
-async def health_check():
-    """Retrieve overall system operational status."""
-    return {"status": "healthy", "service": "Season-Spot Backend"}
+async def health_check(cache: LRUCacheWithTTL = Depends(get_itinerary_cache)):
+    """Retrieve overall system operational status and in-memory cache statistics."""
+    return {
+        "status": "healthy",
+        "service": "Season-Spot Backend",
+        "cache": {
+            "hits": cache.hits,
+            "misses": cache.misses,
+            "hit_ratio": cache.hit_ratio,
+            "evictions": cache.evictions,
+            "active_keys": len(cache.cache)
+        }
+    }
 
 @app.get("/health/knowledge", tags=["System Health Status"])
 async def knowledge_health(repo: JSONStateRepository = Depends(get_state_repository)):

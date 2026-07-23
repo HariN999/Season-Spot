@@ -99,9 +99,12 @@ def test_response_validator_failure():
     with pytest.raises(InvalidAIResponse):
         ResponseValidator.validate_response(invalid_data, ItineraryPlan, expected_days=2)
 
+from app.services.cache import LRUCacheWithTTL
+
 def test_itinerary_service_success_flow(travel_service, prompt_builder):
     ai_provider = MockSuccessAIProvider()
-    service = ItineraryService(travel_service, ai_provider, prompt_builder)
+    cache = LRUCacheWithTTL()
+    service = ItineraryService(travel_service, ai_provider, prompt_builder, cache)
     
     result = service.generate_itinerary("Andhra Pradesh", "Winter", "Adventure", "Affordable", "3 Days")
     assert isinstance(result, ItineraryPlan)
@@ -110,7 +113,8 @@ def test_itinerary_service_success_flow(travel_service, prompt_builder):
 
 def test_itinerary_service_transient_retry_success(travel_service, prompt_builder):
     ai_provider = MockTransientAIProvider()
-    service = ItineraryService(travel_service, ai_provider, prompt_builder)
+    cache = LRUCacheWithTTL()
+    service = ItineraryService(travel_service, ai_provider, prompt_builder, cache)
     
     result = service.generate_itinerary("Andhra Pradesh", "Winter", "Adventure", "Affordable", "3 Days")
     assert isinstance(result, ItineraryPlan)
@@ -118,7 +122,8 @@ def test_itinerary_service_transient_retry_success(travel_service, prompt_builde
 
 def test_itinerary_service_fallback_flow(travel_service, prompt_builder):
     ai_provider = MockFailureAIProvider()
-    service = ItineraryService(travel_service, ai_provider, prompt_builder)
+    cache = LRUCacheWithTTL()
+    service = ItineraryService(travel_service, ai_provider, prompt_builder, cache)
     
     # Even if AI returns completely bad structures, it should fall back to deterministic local plan
     result = service.generate_itinerary("Andhra Pradesh", "Winter", "Adventure", "Affordable", "3 Days")

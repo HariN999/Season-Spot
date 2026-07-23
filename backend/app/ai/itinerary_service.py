@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 from app.ai.providers.base import BaseAIProvider
 from app.ai.prompt_builder import PromptBuilder
 from app.ai.response_parser import ResponseParser
@@ -14,11 +15,13 @@ class ItineraryService:
         self,
         travel_service: TravelService,
         ai_provider: BaseAIProvider,
-        prompt_builder: PromptBuilder
+        prompt_builder: PromptBuilder,
+        cache: Any
     ):
         self.travel_service = travel_service
         self.ai_provider = ai_provider
         self.prompt_builder = prompt_builder
+        self.cache = cache
 
     def generate_itinerary(
         self,
@@ -34,6 +37,12 @@ class ItineraryService:
         """
         logger.info(f"Initiating itinerary generation for: {state_name} ({season_name})")
         
+        # 0. Check cache hit
+        cache_key = f"{state_name.lower().strip()}_{season_name.lower().strip()}_{trip_type.lower().strip()}_{budget.lower().strip()}_{duration.lower().strip()}"
+        if cached_plan := self.cache.get(cache_key):
+            logger.info(f"Cache Hit! Returning cached plan for {state_name}.")
+            return cached_plan
+
         # 1. Retrieve verified knowledge database details
         state_data = self.travel_service.get_state(state_name)
         
@@ -66,6 +75,7 @@ class ItineraryService:
                     expected_days=expected_days
                 )
                 logger.info(f"Itinerary validation successful on attempt {attempt}.")
+                self.cache.set(cache_key, validated)
                 return validated
                 
             except Exception as e:
