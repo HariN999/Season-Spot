@@ -2,7 +2,7 @@ import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    gemini_api_key: str
+    gemini_api_key: str = ""
     mongo_uri: str = ""
     app_env: str = "development"
     port: int = 5000

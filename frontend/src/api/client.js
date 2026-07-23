@@ -21,10 +21,21 @@ export const apiFetch = async (endpoint, options = {}) => {
     },
   };
 
-  // Set up request timeout
+  // Set up request timeout and link caller's signal if provided
   const timeoutMs = options.timeout || 15000;
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  
+  if (options.signal) {
+    if (options.signal.aborted) {
+      controller.abort();
+    } else {
+      options.signal.addEventListener('abort', () => {
+        controller.abort();
+      });
+    }
+  }
+  
   config.signal = controller.signal;
 
   try {

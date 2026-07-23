@@ -11,19 +11,20 @@ class ResponseParser:
             raise InvalidAIResponse("AI response text is empty.")
             
         logger.info("Parsing raw Gemini response text...")
-        cleaned = raw_text.strip()
+        text = raw_text.strip()
         
-        # Strip markdown json code block fences if present
-        if cleaned.startswith("```"):
-            lines = cleaned.splitlines()
-            if lines[0].startswith("```"):
-                lines = lines[1:]
-            if lines and lines[-1].strip() == "```":
-                lines = lines[:-1]
-            cleaned = "\n".join(lines).strip()
+        # Robustly locate JSON bounds by scanning for first '{' and last '}'
+        start_idx = text.find('{')
+        end_idx = text.rfind('}')
+        
+        if start_idx == -1 or end_idx == -1 or end_idx < start_idx:
+            logger.error("No JSON boundaries found in response: " + text)
+            raise InvalidAIResponse("Could not locate any valid JSON boundaries in the response.")
+            
+        json_str = text[start_idx:end_idx + 1]
             
         try:
-            return json.loads(cleaned)
+            return json.loads(json_str)
         except json.JSONDecodeError as e:
-            logger.error(f"JSON syntax parsing failed: {e.msg} at line {e.lineno} col {e.colno}")
+            logger.error(f"JSON syntax parsing failed: {e.msg} at line {e.lineno} col {e.colno} for content: {json_str}")
             raise InvalidAIResponse(f"Failed to parse text as valid JSON: {str(e)}")

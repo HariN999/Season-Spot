@@ -10,29 +10,25 @@ export const useStateDetails = (stateName) => {
   useEffect(() => {
     if (!stateName) return;
     
-    let isMounted = true;
+    const controller = new AbortController();
     const loadDetails = async () => {
       setLoading(true);
       setError(null);
       try {
-        const data = await fetchStateDetails(stateName);
-        if (isMounted) {
-          setStateData(data);
-        }
+        const data = await fetchStateDetails(stateName, controller.signal);
+        setStateData(data);
       } catch (err) {
-        if (isMounted) {
+        if (err.name !== 'AbortError') {
           setError(err.message || 'Failed to load state details.');
         }
       } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
+        setLoading(false);
       }
     };
 
     loadDetails();
     return () => {
-      isMounted = false;
+      controller.abort();
     };
   }, [stateName, refreshTrigger]);
 

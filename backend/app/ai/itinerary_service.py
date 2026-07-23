@@ -37,8 +37,12 @@ class ItineraryService:
         """
         logger.info(f"Initiating itinerary generation for: {state_name} ({season_name})")
         
-        # 0. Check cache hit
-        cache_key = f"{state_name.lower().strip()}_{season_name.lower().strip()}_{trip_type.lower().strip()}_{budget.lower().strip()}_{duration.lower().strip()}"
+        # 0. Check cache hit (utilizing cache version keys targeting KB, Prompt, and AI Model)
+        kb_version = self.travel_service.repo.get_metadata().version
+        prompt_version = "v2"
+        model_name = getattr(self.ai_provider, "model_name", "mock")
+        cache_key = f"{kb_version}_{prompt_version}_{model_name}_{state_name.lower().strip()}_{season_name.lower().strip()}_{trip_type.lower().strip()}_{budget.lower().strip()}_{duration.lower().strip()}"
+        
         if cached_plan := self.cache.get(cache_key):
             logger.info(f"Cache Hit! Returning cached plan for {state_name}.")
             return cached_plan

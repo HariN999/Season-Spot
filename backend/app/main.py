@@ -5,14 +5,33 @@ from app.config import settings
 from app.utils.logging_config import setup_logging
 from app.utils.exceptions import register_exception_handlers
 
+import contextlib
+
 # Initialize logging configuration before doing anything else
 setup_logging()
 logger = logging.getLogger("app.main")
 
+from app.repositories.dependency import state_repository, get_state_repository
+from app.ai.dependency import get_ai_provider
+from app.ai.providers.base import BaseAIProvider
+from app.repositories.json_repository import JSONStateRepository
+from app.routers import states, search, compare, planner
+from fastapi import Depends
+
+@contextlib.asynccontextmanager
+async def lifespan(app: FastAPI):
+    logger.info(f"Season Spot FastAPI backend starting up in environment: {settings.app_env}")
+    # Load and validate the entire deterministic knowledge base
+    state_repository.load_all()
+    logger.info("Knowledge base successfully validated and loaded on startup.")
+    yield
+    logger.info("Season Spot FastAPI backend shutting down.")
+
 app = FastAPI(
     title="Season-Spot API",
     description="Intelligent Travel & Culinary Seasonal Engine for India",
-    version="2.0.0"
+    version="2.0.0",
+    lifespan=lifespan
 )
 
 # Configure CORS Middleware
@@ -27,25 +46,11 @@ app.add_middleware(
 # Register central error mapping handlers
 register_exception_handlers(app)
 
-from app.repositories.dependency import state_repository, get_state_repository
-from app.ai.dependency import get_ai_provider
-from app.ai.providers.base import BaseAIProvider
-from app.repositories.json_repository import JSONStateRepository
-from app.routers import states, search, compare, planner
-from fastapi import Depends
-
 # Register REST Routers
 app.include_router(states.router)
 app.include_router(search.router)
 app.include_router(compare.router)
 app.include_router(planner.router)
-
-@app.on_event("startup")
-async def startup_event():
-    logger.info(f"Season Spot FastAPI backend starting up in environment: {settings.app_env}")
-    # Load and validate the entire deterministic knowledge base
-    state_repository.load_all()
-    logger.info("Knowledge base successfully validated and loaded on startup.")
 
 @app.get("/")
 async def root():

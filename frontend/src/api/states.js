@@ -1,13 +1,13 @@
 import { apiFetch } from './client';
 
-export const fetchStates = async () => {
-  return apiFetch('/api/states');
+export const fetchStates = async (signal) => {
+  return apiFetch('/api/states', { signal });
 };
 
-export const fetchStateDetails = async (stateName) => {
-  return apiFetch(`/api/states/${encodeURIComponent(stateName)}`);
+export const fetchStateDetails = async (stateName, signal) => {
+  return apiFetch(`/api/states/${encodeURIComponent(stateName)}`, { signal });
 };
 
-export const fetchStateSeasonDetails = async (stateName, seasonName) => {
-  return apiFetch(`/api/states/${encodeURIComponent(stateName)}/seasons/${encodeURIComponent(seasonName)}`);
+export const fetchStateSeasonDetails = async (stateName, seasonName, signal) => {
+  return apiFetch(`/api/states/${encodeURIComponent(stateName)}/seasons/${encodeURIComponent(seasonName)}`, { signal });
 };

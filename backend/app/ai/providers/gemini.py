@@ -11,18 +11,24 @@ class GeminiAIProvider(BaseAIProvider):
     def __init__(self):
         self.api_key = settings.gemini_api_key
         self.model_name = "gemini-1.5-flash"
-        
+        self._model = None
+
+    def _ensure_configured(self):
+        if self._model is not None:
+            return
+            
         if not self.api_key:
             raise AIProviderError("Gemini API key is not configured in settings.")
             
         try:
             genai.configure(api_key=self.api_key)
-            self.model = genai.GenerativeModel(self.model_name)
-            logger.info("Gemini provider successfully configured.")
+            self._model = genai.GenerativeModel(self.model_name)
+            logger.info("Gemini provider client successfully configured lazily.")
         except Exception as e:
             raise AIProviderError(f"Failed to configure Gemini client: {str(e)}")
 
     def generate(self, prompt: str) -> str:
+        self._ensure_configured()
         logger.info(f"Sending request to Gemini model: {self.model_name}")
         start_time = time.time()
         
@@ -30,7 +36,7 @@ class GeminiAIProvider(BaseAIProvider):
         last_exception = None
         for attempt in range(1, 3):
             try:
-                response = self.model.generate_content(prompt)
+                response = self._model.generate_content(prompt)
                 latency = time.time() - start_time
                 logger.info(f"Gemini generation completed in {latency:.2f}s (attempt {attempt})")
                 return response.text
@@ -44,8 +50,9 @@ class GeminiAIProvider(BaseAIProvider):
 
     def health_check(self) -> bool:
         try:
+            self._ensure_configured()
             # Send a simple validation ping to verify key state
-            self.model.generate_content("ping")
+            self._model.generate_content("ping")
             return True
         except Exception:
             return False

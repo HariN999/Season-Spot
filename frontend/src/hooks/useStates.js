@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { fetchStates } from '../api/states';
 
 export const useStates = () => {
@@ -6,22 +6,32 @@ export const useStates = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const loadStates = async () => {
+  const loadStates = useCallback(async (signal) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchStates();
+      const data = await fetchStates(signal);
       setStates(data);
     } catch (err) {
-      setError(err.message || 'Failed to fetch states.');
+      if (err.name !== 'AbortError') {
+        setError(err.message || 'Failed to fetch states.');
+      }
     } finally {
       setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    loadStates();
   }, []);
 
-  return { states, loading, error, retry: loadStates };
+  useEffect(() => {
+    const controller = new AbortController();
+    loadStates(controller.signal);
+    return () => {
+      controller.abort();
+    };
+  }, [loadStates]);
+
+  const handleRetry = () => {
+    loadStates();
+  };
+
+  return { states, loading, error, retry: handleRetry };
 };
