@@ -87,13 +87,49 @@ def get_state_info():
             return jsonify([db_suggestion])
 
         # --- Call AI API with retry ---
+        if not api_key:
+            fallback = {
+                "state": state,
+                "season": season,
+                "vibe": "Heritage & Nature",
+                "suitabilityScore": 8.5,
+                "tempRange": "20°C - 30°C",
+                "weatherDesc": f"Pleasant weather in {state} during {season}, ideal for exploring cultural landmarks and sampling local cuisine.",
+                "food": [
+                    {"name": f"{state} Regional Thali", "desc": "Authentic platter featuring seasonal vegetable curries, local grains & homemade pickles.", "tag": "Traditional"},
+                    {"name": "Seasonal Sweet Delicacy", "desc": "Traditional regional dessert made with milk, nuts, and natural cane sugar.", "tag": "Dessert"}
+                ],
+                "locations": [
+                    {"name": f"{state} Capital & Old Town", "highlight": "Historic architecture, bustling local bazaars & cultural centers.", "bestTime": "Morning"},
+                    {"name": "Scenic Nature Sanctuary", "highlight": "Lush green parklands and scenic sunrise points.", "bestTime": "Sunset"}
+                ],
+                "travelTips": ["Carry lightweight cotton clothing and comfortable walking shoes", "Sample street food from recommended local vendors"],
+                "last_updated": datetime.now(timezone.utc)
+            }
+            return jsonify([fallback]), 200
+
         model = genai.GenerativeModel('gemini-1.5-flash')
         prompt = f"""
-        Provide seasonal information for {state}, India, for the {season} season.
-        List 3-4 popular seasonal food dishes and 3-4 popular travel locations.
-        Return as minified JSON: {{"food": ["Dish1", "Dish2"], "locations": ["Place1", "Place2"]}}.
+        Provide comprehensive seasonal travel and culinary information for {state}, India, for the {season} season.
+        Return ONLY valid minified JSON format matching exactly this structure:
+        {{
+          "vibe": "e.g. Heritage, Beach, Wildlife, or Hill Station",
+          "suitabilityScore": 8.8,
+          "tempRange": "e.g. 24°C - 30°C",
+          "weatherDesc": "A descriptive overview of the climate and scenery during this season.",
+          "food": [
+            {{"name": "Dish Name", "desc": "Short appetizing description", "tag": "e.g. Street Food, Traditional, or Dessert"}}
+          ],
+          "locations": [
+            {{"name": "Location Name", "highlight": "What makes it special in this season", "bestTime": "e.g. Morning, Evening, or Full Day"}}
+          ],
+          "travelTips": [
+            "Insider travel tip 1",
+            "Insider travel tip 2"
+          ]
+        }}
         """
-        ai_data = {"food": [], "locations": []}
+        ai_data = {}
         for attempt in range(3):
             try:
                 response = model.generate_content(prompt)
@@ -107,8 +143,13 @@ def get_state_info():
         new_suggestion = {
             "state": state,
             "season": season,
+            "vibe": ai_data.get("vibe", "Heritage & Nature"),
+            "suitabilityScore": ai_data.get("suitabilityScore", 8.5),
+            "tempRange": ai_data.get("tempRange", "20°C - 30°C"),
+            "weatherDesc": ai_data.get("weatherDesc", f"Pleasant weather in {state} during {season}."),
             "food": ai_data.get("food", []),
             "locations": ai_data.get("locations", []),
+            "travelTips": ai_data.get("travelTips", []),
             "last_updated": datetime.now(timezone.utc)
         }
 
@@ -128,11 +169,73 @@ def get_state_info():
         fallback = {
             "state": state,
             "season": season,
+            "vibe": "Heritage & Nature",
+            "suitabilityScore": 8.0,
+            "tempRange": "20°C - 30°C",
+            "weatherDesc": f"Pleasant climate in {state} during {season}.",
             "food": [],
             "locations": [],
+            "travelTips": [],
             "last_updated": datetime.now(timezone.utc)
         }
-        return jsonify([fallback]), 200  # Always return 200 so frontend receives valid JSON
+        return jsonify([fallback]), 200
+
+@app.route('/api/itinerary', methods=['POST'])
+def generate_itinerary():
+    data = request.get_json() or {}
+    state = data.get('state', 'Goa')
+    season = data.get('season', 'Winter')
+    trip_type = data.get('tripType', 'Foodie & Cultural')
+    budget = data.get('budget', 'Moderate')
+    duration_str = data.get('duration', '3 Days')
+    try:
+        days = int(duration_str.split()[0])
+    except Exception:
+        days = 3
+
+    if not api_key:
+        fallback_plan = {}
+        for d in range(1, days + 1):
+            if d == 1:
+                fallback_plan[f"day{d}"] = f"Arrival in {state} during {season}. Take a relaxing stroll through local heritage streets, sample iconic local snacks, and visit the main cultural museum."
+            elif d == days:
+                fallback_plan[f"day{d}"] = f"Cultural immersion and souvenir shopping in {state}'s vibrant artisanal bazaars. Farewell dinner featuring famous regional desserts."
+            else:
+                fallback_plan[f"day{d}"] = f"Day {d} exploration of top scenic highlights, local culinary spots, and heritage landmarks in {state}."
+        return jsonify({
+            "status": "success",
+            "plan": fallback_plan
+        })
+
+    try:
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        json_keys = ", ".join([f'"day{d}": "activities and food spots for day {d}"' for d in range(1, days + 1)])
+        prompt = f"""
+        Create a {days}-day travel itinerary for a trip to {state}, India during {season}.
+        Style: {trip_type}, Budget: {budget}.
+        Return ONLY minified valid JSON format matching exactly this structure:
+        {{
+          {json_keys}
+        }}
+        """
+        response = model.generate_content(prompt)
+        clean_text = response.text.strip().replace('```json', '').replace('```', '')
+        parsed = json.loads(clean_text)
+        return jsonify({"status": "success", "plan": parsed})
+    except Exception as e:
+        logging.error(f"Gemini itinerary generation error: {e}")
+        fallback_plan = {}
+        for d in range(1, days + 1):
+            if d == 1:
+                fallback_plan[f"day{d}"] = f"Arrival in {state} during {season}. Explore central landmarks and local food joints."
+            elif d == days:
+                fallback_plan[f"day{d}"] = f"Explore traditional handicrafts markets and enjoy a relaxing farewell evening."
+            else:
+                fallback_plan[f"day{d}"] = f"Day {d} of visiting top scenic destinations across {state} and enjoying regional specialties."
+        return jsonify({
+            "status": "fallback",
+            "plan": fallback_plan
+        })
 
 # --- Main Execution ---
 if __name__ == '__main__':
